@@ -1,0 +1,107 @@
+<div *ngIf="isLoading  "
+  style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;"
+  class="d-flex align-items-center justify-content-center">
+
+  <div>
+    <mat-spinner [diameter]="75"></mat-spinner>
+
+  </div>
+</div>
+
+
+<h3><b>Delivery Report:</b></h3>
+<div class="filtersRow list_filters">
+
+  <form class="row" formGroupName="filtersForm">
+    <mat-form-field appearance="outline" class="input-field" class="col-md-2 col-sm-12">
+      <mat-select (selectionChange)="selectedCus($event)" placeholder="Customer Name" formControlName="customerName">
+        <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" style="height: 50px;" >
+        <mat-option [value]=""> --Option-- </mat-option>
+        <mat-option *ngFor="let type of customers" [value]="type.id">
+          {{ type["name"] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field" class="col-md-2 col-sm-12">
+      <mat-select (selectionChange)="selectedGas($event)" placeholder="Gas Type" formControlName="gasType">
+        <mat-option [value]=""> --Option-- </mat-option>
+        <mat-option *ngFor="let type of gastype" [value]="type['id']">
+          {{ type["gasName"] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field" class="col-md-2 col-sm-12">
+      <mat-select (selectionChange)="selectedSize($event)" placeholder="Cylinder Size" formControlName="cylinderSize">
+        <mat-option [value]=""> --Option-- </mat-option>
+        <mat-option *ngFor="let type of cylinderSize" [value]="type['id']">
+          {{ type["cylinderType"] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-md-3 col-sm-12">
+      <mat-date-range-input [rangePicker]="picker">
+        <input (dateChange)="selectStartDate($event)" matStartDate placeholder="Start date"
+          formControlName="startDate" />
+        <input (dateChange)="selectEndDate($event)" matEndDate placeholder="End date" formControlName="endDate" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <div class="clearFilterBtn col-md-2 col-sm-3">
+      <button (click)="clearFilterdata()">Clear</button>
+    </div>
+
+    <div class="col-md-1 col-sm-6 text-end" [ngClass]="{'displayLoader':isDownloading}">
+      <img class="imgexcel" (click)=" getData()" src="assets/excel1.png" *ngIf="!isDownloading">
+    </div>
+
+    <div class="spinner-border text-primary col-md-1 col-sm-6 text-end" *ngIf="isDownloading" role="status"
+      style="margin-left:auto;">
+      <span class="sr-only"></span>
+    </div>
+
+
+
+
+  </form>
+
+
+  <div class="w-100">
+    <table id="Delivery" class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Sr.no</th>
+          <th>Customer Name</th>
+          <th>Site Name</th>
+          <th style="width: 12px;">Cylinder Code</th>
+          <th style="width: 12px;">Cylinder QR Code</th>
+          <th>Gas Type</th>
+          <th style="width: 12px;">Cylinder Size</th>
+          <th>Qty</th>
+          <th>DC No.</th>
+          <th style="width: 20px;">Transaction Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of reportsList;let i=index ">
+          <td>{{pageNumber+(i+1)}}</td>
+          <td>{{ record.name }}</td>
+          <td>{{ record.Location }}</td>
+          <td>{{record.cylinderCode}}</td>
+          <td>{{record.cylinderQrCode}}</td>
+          <td>{{ record.gasName }}</td>
+          <td>{{ record.cylinderType }}</td>
+
+          <td>{{ record.cylinderCount }}</td>
+          <td>{{ record.dcrId }}</td>
+          <td>{{ record.transactionDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator *ngIf="totalRecords" (page)="handlePageEvent($event)" [pageIndex]="currentPage"
+      [pageSizeOptions]="[10]" [length]="totalRecords" #paginatorPageSize showFirstLastButtons></mat-paginator>
+  </div>

@@ -1,0 +1,98 @@
+table {
+    width: 100%;
+}
+
+
+th {
+    background-color: #b3b3b3;
+    white-space:nowrap;
+    vertical-align:middle;
+}
+
+th.mat-header-cell {
+    font-weight: 500;
+    color: #000;
+}
+
+.edit{
+    color:#0466BF;
+    cursor:pointer;
+    margin-right: 5px;
+}
+
+.delete{
+    color:red;
+    cursor:pointer;
+}
+
+.Action_Type{
+    display:flex;
+    align-items:center;
+}
+
+.Cell{
+ 
+    vertical-align: middle;
+    white-space: nowrap;
+    //padding: 0 10px;
+}
+
+.isEmpty {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.filled {
+    background-color: #00c300;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #009200;
+}
+
+.with_customer{
+    background-color: #e6c15b;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #e6c15b;
+}
+.with_refiller{
+    background-color: #63b4f7;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #63b4f7;
+}
+
+.empty {
+    font-size: 10px;
+    background-color: #cc3f3f;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #920000;
+}
+
+.mat-column-table_action{
+   width: 10%;
+   text-align: right;
+}
+
+.transaction_type {
+    cursor: pointer;
+}
+
+tr.mat-row {
+    height: 40px;
+}
+
+tr.mat-header-row {
+    height: 0;
+}
+
+.cylinderCode {
+    cursor: pointer;
+}
+
+::ng-deep .mat-paginator-container {
+    margin-top: -22px;
+}

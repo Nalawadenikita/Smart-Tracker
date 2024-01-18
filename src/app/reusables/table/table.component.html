@@ -1,0 +1,142 @@
+<div class="table-responsive">
+  <table class="table table-striped table-sm" mat-table [dataSource]="dataSource" matSort
+    (matSortChange)="announceSortChange($event)">
+
+
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col.field">
+
+      <th #dontrender mat-header-cell *matHeaderCellDef class="headertable pt-2 pb-2" mat-sort-header [disabled]="col.dataType === 'table_action' || col.header === 'Select' ">
+        
+        <ng-container *ngIf="col.header !== 'Select'">
+          {{col.header}}
+        </ng-container>
+        <ng-container class="selectHeader" *ngIf="col.header === 'Select' && enableSelectAll">
+          <mat-checkbox (change)="$event ? masterToggle() : null; selectAll(col.selectAllAction, $event)"
+            [checked]="isAllSelected()" >
+          </mat-checkbox>
+        </ng-container>
+      </th>
+       
+    
+
+      <td mat-cell *matCellDef="let row" class="Cell">
+
+        <div *ngIf="col.field === 'select' " class="checkbox">
+          <mat-checkbox (change)="select(col.action, $event, row); $event ? selection.toggle(row) : null"
+            [checked]="row['status']" (click)="$event.stopPropagation()">
+          </mat-checkbox>
+        </div>
+       
+
+        <div *ngIf="col.field === 'id'">
+          {{ (currentPage * 10) + dataSource.filteredData.indexOf(row) + 1}}
+        </div>
+
+        <div
+          *ngIf="col.dataType === 'string' && col.field !== 'id' && col.field !== 'rented' &&  col.field !== 'gasSymbol' && col.field !== 'email' && col.field !== 'username' && col.field !== 'cylinder_quantity' && col.field !== 'transaction_type' && col.field !== 'cylinderCount'&&col.field!=='cylinderId' && col.field !== 'transactionDate' && col.field!=='dcrId' &&col.field!=='days' && col.field !== 'cylinderCode' && col.field !== 'empty' && col.field !== 'dcId' && col.field !== 'ecId' && col.field !== 'ecrId' && col.field !== 'transaction_id' && col.field !== 'sitename' ">
+           {{row[col.field] }}
+        </div>
+
+
+        <div *ngIf="col.dataType === 'boolean' && col.field === 'active'">
+          <p *ngIf="row[col.field]" style="margin-top: 0px; margin-bottom: 3px;"><img src="/assets/greencircle.png"
+              style="width:10px;margin-right:5px">Active</p>
+          <p *ngIf="!row[col.field]" style="margin-top: 3px;margin-left: -4px; margin-bottom: 4px"><img
+              src="/assets/redcircle.png" style="width:18px;margin-right:1px">Inactive</p>
+        </div>
+
+        <div *ngIf="col.field === 'rented'" class="rented">
+          <span *ngIf="row[col.field]" class="material-symbols-outlined text-success ">done</span>
+          <span *ngIf="!row[col.field]" class="material-symbols-outlined text-danger">close</span>
+        </div>
+
+        <div *ngIf="col.field == 'gasSymbol' || col.field == 'sitename'" class="gasSymbol">
+          {{row[col.field]}}
+        </div>
+
+        <div *ngIf="col.field == 'email'" class="email">
+          {{row[col.field]}}
+        </div>
+
+        <div *ngIf="col.field == 'username'" class="username">
+          {{row[col.field]}}
+        </div>
+
+        <!-- <div
+          *ngIf="col.field == 'cylinder_quantity' || col.field == 'cylinderCount' ||  col.field == 'dcId' || col.field == 'ecId' "
+          class="quantity" style="margin-left: 20px;">
+          {{row[col.field]}}
+        </div> -->
+        <div
+        *ngIf=" col.field == 'cylinderCount' ||  col.field == 'dcId' || col.field == 'ecId' "
+        class="quantity">
+        {{row[col.field]}}
+      </div>
+        <div
+        *ngIf="col.field == 'cylinder_quantity' "
+        class="quantity" style="margin-left: 27px;">
+        {{row[col.field]}}
+      </div>
+        <div *ngIf="col.field === 'transaction_type'" class="transaction_type" style="font-size: 13px;">
+          <a (click)="viewTransaction(col.action, row)">
+            {{row[col.field]}}
+          </a>
+        </div>
+
+        <div *ngIf="col.field == 'transactionDate' " class="transactionDate" style="font-size: 13px;">
+          {{row[col.field]}}
+        </div>
+
+        <div *ngIf="col.field === 'status'" class="isEmpty">
+          <span *ngIf="row[col.field] == 0" class="empty">Empty</span>
+          <span *ngIf="row[col.field] == 1" class="filled">Filled</span>
+          <span *ngIf="row[col.field] == 2" class="with_customer">With Customer</span>
+          <span *ngIf="row[col.field] == 3" class="with_refiller">With Refiller</span>
+        </div>
+        <div *ngIf="col.field === 'customer_name'" class="d-flex align-items-center">
+
+          <span class="material-symbols-outlined" style="color:rgb(101, 187, 61)">
+            {{row['isCustomer']?'person':'local_gas_station'}}
+          </span>
+          <span>
+            {{row[col.field] }}
+          </span>
+        </div>
+
+        <div *ngIf="col.field == 'days' ">
+          {{row[col.field]}}
+        </div>
+
+        <div *ngIf="col.field == 'dcrId' || col.field == 'ecrId' ">
+          {{row[col.field]}}
+        </div>
+        <div *ngIf="col.field =='cylinderId' || col.field == 'transaction_id' " style="margin-left: 8px;">
+          {{row[col.field]}}
+        </div>
+
+        <div *ngIf="col.field == 'cylinderCode'" (click)="viewCylinderHistory(col.action, row)" [ngStyle]="{color:row['days'] > 30 ? 'red':row['days'] > 15 && row['days'] < 30 ? 'orange' :''}" class="cylinderCode" >
+          {{row[col.field]}}
+        </div>
+       <div *ngIf="col.dataType === 'table_action' && !isDisUser" class="Action_Type" >
+          <div *ngFor="let a of col.actions">
+            <span *ngIf="a.action === 'edit' "> <mat-icon class="edit" (click)="editRow(a,row)"><span
+                  class="material-symbols-outlined">
+                  edit_square
+                </span></mat-icon></span>
+            <span *ngIf="a.action === 'delete' "> <mat-icon class="delete"
+                (click)="deleteRow(a,row)">delete</mat-icon></span>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+
+  <mat-paginator *ngIf="totalRecords" #paginator (page)="handlePageEvent($event)" [pageIndex]="currentPage" [pageSizeOptions]="[10]" [length]="totalRecords" showFirstLastButtons
+    style="background-color: #fafafa;" aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>

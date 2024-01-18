@@ -1,0 +1,128 @@
+h3 {
+  margin-bottom: 3px;
+}
+
+.btn {
+  background-color: #0466BF;
+  color: #fff;
+  width: 38px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  padding: 4.5px;
+  margin-bottom: 17px;
+  margin-left: auto;
+}
+
+.imgexcel {
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  margin-top: 3px;
+}
+
+
+
+
+
+.ColRed {
+  color: rgb(194, 96, 112);
+}
+
+.DisTable {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.total_holding {
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  text-align: left;
+  background-color: #EEEEEE;
+  padding: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+
+
+}
+
+table tr {
+  border-bottom: 0.5px solid #ddd
+}
+
+table td {
+  background-color: white;
+  padding: 5px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+h1 {
+  text-align: center;
+  color: gray;
+}
+
+::ng-deep .list_filters .mat-form-field-flex>.mat-form-field-infix {
+  padding: 0.4em 0px 0.8em 0px !important
+}
+
+::ng-deep .list_filters .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid;
+  margin: 7px 4px 0px 4px;
+}
+
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-label {
+  margin-top: -10px;
+}
+
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #a2dbf1;
+}
+
+::ng-deep .list_filters .mat-select-panel {
+  background-color: red !important;
+}
+
+
+
+@media only screen and (max-width: 670px) {
+  .data {
+    align-items: flex-start;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .data {
+    flex-direction: column;
+  }
+
+  .data label {
+    display: none;
+  }
+
+  .data .btn {
+    width: 100%;
+  }
+
+  .data .appfilter {
+    width: 100%;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+
+
+}

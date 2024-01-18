@@ -1,0 +1,79 @@
+
+
+
+<div class="container">
+
+  <div class="mainclass">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <b>{{label}}</b>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="refillerForm" class="row g-4" (ngSubmit)="formData ? editRefiller():addRefiller()">
+            <div class="col-md-6 d-flex gap-2 customerdiv ">
+              <!-- <label for="inputEmail4" class="form-label customerlabel">Name<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['name'].errors }" (keydown)="validateText($event); restrictInitialSpace($event)" >
+                  
+                <div *ngIf="submitted && dist['name'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['name'].errors?.['minlength'] && !dist['name'].errors?.['pattern']"class="text-danger">
+                    Name must be at least 3 characters
+                   </div>
+                  <div *ngIf="dist['name'].errors?.['required']">Name is required</div>
+                  <div class="text-danger" *ngIf="dist['name'].errors?.['pattern']">
+                    *Name should only contain alphabets and spaces.
+                  </div>
+                </div>
+              
+                
+                
+              </div>
+            </div>
+             <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputPassword4" class="form-label customerlabel  cus">Address<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="inputPassword4" id="address" formControlName="address" placeholder="Address *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['address'].errors }" (keydown)="restrictInitialSpace($event)" >
+                <div *ngIf="submitted && dist['address'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['address'].errors?.['required']">Address is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputEmail4" class="form-label customerlabel">Email<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="email" class="form-control" id="inputEmail4" id="email" formControlName="email" placeholder="Email *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['email'].errors }" (keydown)="restrictInitialSpace($event)" >
+               
+                <div *ngIf="submitted || dist['email'].errors" class="invalid-feedback">
+                  <small *ngIf="dist['email'].errors?.['pattern'] "
+                  class="text-danger">
+                  Please enter a valid email address</small>
+                  <div *ngIf="dist['email'].errors?.['required']">Email is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputphone" class="form-label customerlabel ">Phone<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control"  id="phone" formControlName="phone" placeholder="Phone no.*"
+                  [ngClass]="{ 'is-invalid': submitted && dist['phone'].errors }" (keydown)="validateNumber($event); restrictInitialSpace($event)"  >
+                  <div *ngIf="submitted || dist['phone'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['phone'].errors?.['pattern']"class="text-danger">Please enter a valid phone number.</div>
+                  <div *ngIf="dist['phone'].errors?.['required']">Phone no. is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button">
+              <input type="submit" class="btn btn-primary" value="Save" /> 
+              <button type="button" class="btn btn-danger" (click)="onclick()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>   

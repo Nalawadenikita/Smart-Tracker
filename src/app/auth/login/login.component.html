@@ -1,0 +1,68 @@
+<section class="loginMainContainer flex">
+  <div class="loginLeftDiv flex justify-center">
+    <img src="/assets/st.png" alt="oxygen-tanks" />
+  </div>
+  <div class="loginRightDiv flex justify-center">
+    <div class="loginRightContent flex flex-col">
+      <div class="loginFormHeader flex justify-center flex-col">
+        <img src="/assets/mfs.png" alt="ndv" />
+      </div>
+      <div class="loginFormTitle"></div>
+      <form [formGroup]="loginForm">
+        <div class="inputFiled flex flex-col">
+          <label for=""
+            ><b>username</b><span class="requiredStar">*</span></label
+          >
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && logins['username'].errors }"
+          />
+
+          <div
+            *ngIf="submitted && logins['username'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="logins['username'].errors?.['required']">
+              Username is required
+            </div>
+          </div>
+        </div>
+
+        <div class="inputFiled flex flex-col">
+          <label for=""
+            ><b>password</b><span class="requiredStar">*</span></label
+          >
+
+          <input
+            [type]="changetype ? 'password' : 'text'"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && logins['password'].errors }"
+          />
+
+          <i
+            [ngClass]="visible ? 'bi bi-eye-slash plogo' : 'bi bi-eye plogo'"
+            (click)="viewPass()"
+          ></i>
+
+          <div
+            *ngIf="submitted && logins['password'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="logins['password'].errors?.['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+
+        <div class="loginFormFooter flex space-between"></div>
+        <button type="submit" class="loginBtn" (click)="login()">Login</button>
+      </form>
+    </div>
+    <div class="loginFooter">
+      <img src="/assets/Group 5.png" width="100px" />
+      <p>All Rights Reserved</p>
+    </div>
+  </div>
+</section>

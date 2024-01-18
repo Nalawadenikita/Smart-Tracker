@@ -1,0 +1,24 @@
+
+<div *ngIf="isLoading  " style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center" >
+
+    <div >
+        <mat-spinner [diameter]="75"></mat-spinner>
+    </div>
+</div>
+<div class="d-flex">
+
+    <h3><b>Cylinder List</b></h3>
+    
+</div>
+<div class="data">
+
+    <app-search-filter class="appfilter" (searchedVal)="serchedValue($event)"></app-search-filter>
+   <!-- <img src="assets/excel_icon.png" (click)="export()"style="width: 40px;height: 30px;"> -->
+    <button class="btn" style="margin-left:auto;" routerLink="/features/inventory/cylinder-add">Add</button>
+    <img src="assets/excel_icon.png" (click)="export()"style="width: 40px;height: 30px; ">
+</div>
+<div class="DisTable">
+    <app-table [tableData]="cylinderData" [displayedColumns]="CylinderCol" [totalRecords]="totalRecords"
+        [totalPages]="totalPages" [currentPage]="currentPage"
+        (pageIndexCalculator)="pageIndexCalculator($event)"></app-table>
+</div>

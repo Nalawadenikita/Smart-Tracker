@@ -1,0 +1,57 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    [opened]="isSidebarOpened"
+    #drawer
+    class="example-sidenav p-0"
+    [mode]="mode"
+  >
+    <app-sidebar (thisEvent)="drawer.close()"></app-sidebar>
+  </mat-drawer>
+
+  <div>
+    <mat-toolbar class="navigate">
+      <div class="w-100 d-flex align-items-center">
+        <span
+          class="material-symbols-outlined"
+          style="cursor: pointer"
+          (click)="drawer.toggle()"
+          >menu</span
+        >
+        <!-- <h6 class="protitle"> <b>Smart Tracker</b></h6> -->
+        <img *ngIf="v !== undefined" [src]="s" class="logo" />
+
+        <div class="dropdown">
+          <img
+            class="imageprofile img-responsive"
+            #toggleButton
+            (click)="display_menu()"
+            src="assets\profilepic.png"
+          />
+          <div class="dropdown-content" #menu *ngIf="isMenuOpened == true">
+            <div class="dropdownHeader">
+              <label class="profile"><b>{{ distributorName | titlecase }}</b></label>
+              <label class="Role">{{role}}</label>
+            </div>
+            <ul>
+              <!-- <li><span class="material-symbols-outlined" style="display:inline-block;">account_circle</span><a>My Profile</a></li> -->
+              <li (click)="openDialog()" *ngIf="isDistributor">
+                <span class="material-symbols-outlined text-info">upload</span
+                ><a>Upload logo</a>
+              </li>
+              <li (click)="logout()">
+                <span class="material-symbols-outlined text-danger">
+                  logout </span
+                ><a>LogOut</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <app-main-content></app-main-content>
+  </div>
+</mat-drawer-container>
+
+
+

@@ -1,0 +1,64 @@
+<div class="wrapper">
+  <form [formGroup]="loginForm">
+    <!-- <form [formGroup]="loginForm"> -->
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-6 login-img-container h-100 m-0 p-0">
+          <!-- images -->
+          <!-- <img src="./assets/proimage.jpg" alt="dfgde" /> -->
+          <!-- <h1>box</h1> -->
+          <img class="login-img" src="./assets/project-img.jpg">
+        </div>
+        <div class="col-md-6 right">
+
+          <div class="input-box">
+            <p><b><span>logo </span><img src="./assets/logo.jpg" alt="dfgde" /> <span> ipsum</span><br>
+                <p  class="smarttrack" style="margin-top: 3px;">Smart Tracker</p>
+              </b></p>
+
+
+            <header><b>Distributor Login</b></header>
+            <div class="input-field">
+              <label for="username">Username<span class="text-danger"style="margin-left:-2px;"> *</span></label>
+
+              <input type="text" class="form-control" aria-label="First name" id="username" formControlName="username">
+              <div class="text-danger"
+                *ngIf="submitted || logins['username'].errors?.['required']&& logins['username'].touched ">Username is
+                required</div>
+            </div>
+
+            <div class="mb-2" style="padding: 0px 10px;">
+              <label class="form-label linp">Password<span class="text-danger"style="margin-left:-2px;"> *</span></label>
+              <div class="pass">
+                <input [type]="changetype? 'password':'text'" class="form-control passcontain "
+                  formControlName="password">
+                <i [ngClass]="visible?'bi bi-eye-slash plogo':'bi bi-eye plogo'" (click)="viewPass()"></i>
+              </div>
+              <div class="text-danger"
+                *ngIf="submitted || logins['password'].errors?.['required']&& logins['password'].touched ">Password is
+                required</div>
+            </div>
+            <div class="input-field">
+              <div class="check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;"
+                  style="margin-right: 2px;">
+                <label class="form-check-label" for="exampleCheck1"> Remember Me<span class="text-danger text-center" style="margin-left: -1px;">*</span> <a href=""
+                    style="margin-left: 110px;">Forgot
+                    Password</a></label>
+              </div>
+            </div>
+
+            <div class="input-field" style="margin-bottom: 50px;">
+              <input type="submit" class="submit text-center btn btn-danger" value="login" (click)="login()">
+
+            </div>
+            <div class="input-field logo">
+              <img src="./assets/icons/mf.png" style="width:96px; margin-top:105px">
+              <h6 style="font-size: 10px; margin-top: 120px;">All Rights Reserved</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

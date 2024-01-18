@@ -1,0 +1,131 @@
+<app-loader></app-loader>
+<div class="card">
+  <div class="card-header">
+    <b>{{ label }}</b>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="cylinderForm" (ngSubmit)="cylindereditdata ? editInventory() : onSubmit()">
+      <div class="row gap-2 cylindercontainer">
+        <div class="col md-6 d-flex">
+          <div class="cylendermain">
+            <mat-form-field appearance="outline">
+              <mat-label>Gas Type</mat-label>
+              <mat-select id="selectdoption" formControlName="gasType" [disabled]="cylindereditdata && true" [ngClass]="{
+                  'is-invalid': submitted && dist['gasType'].errors
+                }">
+                <mat-option *ngFor="let type of gasTypeCylinder" [value]="type['id']" class="cylinder">
+                  {{ type["gasName"] }}
+                </mat-option>
+              </mat-select>
+
+              <mat-error *ngIf="submitted && dist['gasType'].errors" style="font-size: .720rem; margin-top: 0px;">
+                <div class="text-danger" *ngIf="submitted && dist['gasType']">
+
+                  Gas type is required
+                </div>
+
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+
+        <div style="display: inline" class="col md-6 d-flex">
+          <div class="cylendermain">
+            <mat-form-field appearance="outline">
+              <mat-label>Cylinder Size</mat-label>
+              <mat-select id="selectdoption" [(value)]="selectCylindersize" formControlName="cylinderType"
+                [disabled]="cylindereditdata && true" [ngClass]="{
+                  'is-invalid': submitted && dist['cylinderType'].errors
+                }">
+                <mat-option *ngFor="let size of cylinderSize" [value]="size['id']">
+                  {{ size["cylinderType"] }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="submitted && dist['cylinderType'].errors"style="font-size: .720rem; margin-top: 0px;">
+                <div class="text-danger" *ngIf=" dist['cylinderType'].errors?.['required']">
+                 Cylinder size is required
+                </div>
+
+              </mat-error>
+
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row gap-2 cylindercontainer">
+        <div class="col md-6 d-flex">
+          <div class="cylendermain">
+            <mat-form-field appearance="outline">
+              <mat-label>Owner</mat-label>
+              <mat-select formControlName="owner" [disabled]="cylindereditdata && true"
+                [ngClass]="{ 'is-invalid': submitted && dist['owner'].errors }">
+                <mat-option *ngFor="let owners of ownertype" [value]="owners['id']">
+                  {{ owners["typeName"] }}
+                </mat-option>
+              </mat-select>
+
+              <mat-error *ngIf="submitted && dist['owner'].errors"style="font-size: .720rem; margin-top: 0px;">
+                <div class="text-danger" *ngIf="submitted && dist['owner']" >
+                  Owner is required
+                </div>
+
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="col md-6 d-flex">
+          <div class="cylendermain">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Cylinder Code</mat-label>
+              <input type="text" matInput formControlName="cylinderCode" placeholder="Cylinder Code" (keydown)="restrictSpace($event)" >
+
+              <mat-error *ngIf="submitted && dist['cylinderCode'].errors"style="font-size: .680rem; margin-top: 0px;">
+                <div class="text-danger" *ngIf=" dist['cylinderCode'].errors?.['required'] ">
+                  Cylinder code is required
+                </div>
+                <div *ngIf="dist['cylinderCode']?.hasError('invalidCode')">
+                 Cylinder code can not put only special characters .
+                </div>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+        </div>
+
+        
+      </div>
+
+
+      <!--QR CODE  -->
+      <div class="row cylindercontainer">
+        <div class="col-md-6 d-flex">
+          <div class="cylendermain">
+            <mat-form-field appearance="outline">
+              <mat-label>QR Code</mat-label>
+              <input type="text" matInput formControlName="cylinderQrCode" placeholder="QR Code" >
+             </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
+      <div class="buttons">
+        <button [disabled]="inProgress" type="submit" class="btn btn-primary mt-3 ">
+          Save
+        </button>
+        <button type="button" class="btn btn-danger mt-3" style="margin-left: 10px;" (click)="onclick()">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

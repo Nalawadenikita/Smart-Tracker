@@ -1,0 +1,78 @@
+<div *ngIf="isLoading  " style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center" >
+
+  <div >
+      <mat-spinner [diameter]="75"></mat-spinner>
+  </div>
+  </div>
+<h3><b> Aging Report :</b></h3>
+<div class="data row list_filters">
+  <mat-form-field appearance="outline" class="input-field col-md-3">
+    <!-- <mat-label name="cusName">Customer Name</mat-label> -->
+    <mat-select (selectionChange)="selectedCus($event)" placeholder="Customer Name">
+      <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" style="height: 50px;" >
+      <mat-option [value]="">
+        For All Customers
+      </mat-option>
+      <mat-option *ngFor="let type of customers" [value]="type.id">
+        {{ type["name"] }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field col-md-3">
+    <!-- <mat-label name="days">Days</mat-label> -->
+    <mat-select (selectionChange)="selectedDay($event)" placeholder="Days">
+      <mat-option [value]="">
+        For All Days
+      </mat-option>
+      <mat-option *ngFor="let type of dayValues" [value]="type">
+        {{ type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="col-md-6 text-end">
+    <img class="imgexcel"  *ngIf="!isDownloading" (click)="getData()" src="assets/excel1.png">
+    <div class="spinner-border text-primary" *ngIf="isDownloading" role="status" style="margin-left:auto;">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+</div>
+
+<div>
+
+</div>
+<table class="table table-bordered table-sm" id="holdingCylinder">
+  <thead>
+    <tr>
+      <th>Sr.no</th>
+      <th>Customer Name</th>
+      <th>Cylinder Code</th>
+      <th>QR code</th>
+      <th>Cylinder Size</th>
+      <th>Nature of Gas</th>
+      <th>Site Name</th>
+      <th>Date</th>
+      <th>DC No.</th>
+      <th>Days</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let record of customerReportsList; let i = index">
+    <tr>
+      <td>{{pageNumber+(i+1)}}</td>
+      <td>{{record.name}}</td>
+      <td>{{record.id}}</td>
+      <td>{{record.QR}}</td>
+      <td>{{record. cylinder_size}}</td>
+      <td>{{record. gas_type}}</td>
+      <td>{{record.Location}}</td>
+      <td>{{record.date}}</td>
+      <td>{{record.dcId}}</td>
+      <td>{{record.days}}</td>
+    </tr>
+
+  </tbody>
+</table>
+<mat-paginator #paginatorPageSize showFirstLastButtons *ngIf="totalRecords" (page)="handlePageEvent($event)"
+  [pageIndex]="currentPage" [pageSizeOptions]="[10]" [length]="totalRecords"></mat-paginator>
+<!-- <h1 *ngIf="customerReportsList.length === 0">List not available</h1> -->

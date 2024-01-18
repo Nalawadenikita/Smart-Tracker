@@ -1,0 +1,981 @@
+// .main-content {
+//     background: #ffff;
+//     padding: 1rem;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     width: 100%;
+// }
+ 
+// .no-cursor {
+//     caret-color: transparent;
+//   }
+ 
+// .aboveContent {
+   
+//     flex-wrap: wrap;
+//     gap: 15px;
+//     font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
+// }
+// ::ng-deep .mat-input-element{
+// height: 40px !important;
+ 
+ 
+// }
+ 
+ 
+ 
+// ::ng-deep .list_filters .mat-form-field-flex > .mat-form-field-infix {padding: 0.2em 0px 0.5em 0px !important}
+//   ::ng-deep .list_filters .mat-select-arrow {
+//     width: 0;
+//     height: 0;
+//     border-left: 5px solid transparent;
+//     border-right: 5px solid transparent;
+//     border-top: 5px solid;
+//     margin: 7px 4px 0px 4px;
+// }
+// ::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-label { margin-top: -10px; }
+// ::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: #a2dbf1;
+//   }
+ 
+// ::ng-deep .list_filters .mat-select-panel{
+//     background-color: red !important;
+// }
+ 
+// ::ng-deep #swal2-title{
+//     font-size: 14px;
+//   }
+ 
+// ::ng-deep .swal2-popup{
+//     padding: 0px !important;
+//     height: auto;
+//     min-width: 250px;
+//     width: auto;
+ 
+// }
+ 
+// ::ng-deep .swal2-icon {
+//     position: relative;
+//     box-sizing: content-box;
+//     justify-content: center;
+//     width: 5em;
+//     height: 5em;
+//     margin: 0.5em auto -0.4em;
+//     border: 0.25em solid rgba(0,0,0,0);
+//     border-radius: 50%;
+//     border-color: #000;
+//     font-family: inherit;
+//     line-height: 5em;
+//     cursor: default;
+//     user-select: none;
+// }
+ 
+ 
+ 
+// .btn {
+//     background-color: #0466BF;
+//     color: #fff;
+//     width: 59px;
+//     font-size: 12px;
+//     border: none;
+//     // border-radius: 40px;
+//     padding: 4.5px;
+//     margin-right: 5px;
+// }
+ 
+// .btn-warning {
+//     background-color: #e72c2c !important;
+// }
+ 
+ 
+// .input-field input{
+//     flex: 1;
+//     height: 40px; /* Set the desired height for consistency */
+//     outline: none;
+//     border-radius: 4px;
+//     padding: 0rem .5rem;
+// }
+// .input-field select {
+//     flex: 1;
+ 
+//     height: 50px;
+//     outline: none;
+//     border-radius: 4px;
+ 
+//     padding: 0rem .5rem;
+// }
+ 
+// .input-field input:focus,
+// .input-field select:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(253, 13, 73, 0.25);
+// }
+ 
+ 
+// .labels {
+//     max-width: 128px;
+//     width: 100%;
+// }
+ 
+// .mat-form-field {
+//     width: 100%;
+// }
+ 
+// .afterDiv {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 1rem 0rem;
+//     margin-top: 10px;
+//     gap: 10px;
+//     flex-wrap: wrap;
+// }
+ 
+// .afterContent {
+//     display: flex;
+//     align-items: center;
+//     flex: 1;
+//     gap: 5px;
+ 
+// }
+ 
+// .deleteIcon {
+//     color: red;
+//     padding-left: 6px;
+// }
+ 
+// .afterContent input,
+// .afterContent select {
+//     flex: 1;
+//     height: 30px;
+//     outline: none;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     padding: 0rem .5rem;
+// }
+ 
+// .afterContent input:focus,
+// .afterContent select:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+// }
+ 
+// .mselect {
+//     flex: 1;
+//     height: 30px;
+//     outline: none;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     padding: 0.2rem 0.5rem;
+ 
+// }
+ 
+// .qinput {
+//     width: 100%;
+//     height: 50px;
+//     padding: 8px
+// }
+ 
+// .qinput:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+// }
+ 
+// .msg {
+//     color: red;
+//     text-align: center;
+// }
+ 
+ 
+// .tableDatas{
+//     width: 100%;
+// }
+ 
+ 
+// .filter_individual {
+//     display: flex;
+//     margin-bottom: 20px;
+   
+// }
+ 
+// .filter_individual .mselect {
+//     width: 170px;
+// }
+ 
+// .filter_individual .label {
+//     margin-top: 5px;
+//     margin-right: 2px;
+// }
+ 
+// h1 {
+//     text-align: center;
+//     color: gray;
+// }
+ 
+// @media screen and (max-width:1036px) {
+//     .input-field {
+//         width: 100%;
+//     }
+// }
+// @media screen and (max-width:404px){
+   
+// }
+// @media screen and (max-width:430px) {
+//     .filters {
+//         display: flex;
+//         max-width: 100%;
+//         flex-direction: column;
+     
+   
+//    }
+// }
+// @media screen and (max-width:412px) {
+//     .input-field{
+//         flex-flow: column;
+//         align-items: flex-start;
+//         width:100%;
+//     }
+//     .input-field input,
+//     .input-field select{
+//         width: 100%;
+//         flex: auto;
+//     }
+ 
+//     .afterDiv {
+//         flex-flow: column;
+//     }
+ 
+   
+//     .filters {
+//          display: flex;
+//          flex-direction: column;      
+     
+//     }
+//     .filter_individual {
+//         width: 100%;
+       
+//     margin-bottom: 10px;
+//     }
+// }
+ 
+ 
+// .data{
+//   display:flex;
+//   align-items:center;
+//   margin-bottom: 20px;
+//   gap:6px;
+// }
+ 
+ 
+// .btn {
+//     background-color: #0466BF;
+//     color: #fff;
+//     width: 90px;
+//     font-size: 12px;
+//     border: none;
+//     border-radius: 5px;
+//     padding: 4.5px;
+//   }
+ 
+//   .ColRed{
+//     color:rgb(194, 96, 112);
+//   }
+ 
+//   .DisTable{
+//     overflow-x: auto;
+//     width: 100%;
+//   }
+ 
+//   h1 {
+//     text-align: center;
+//     color: grey;
+//   }
+ 
+ 
+//   @media only screen and (max-width: 670px) {
+//     .data{
+//     align-items: flex-start;
+//     }
+//   }
+ 
+//   @media only screen and (max-width: 500px) {
+//     .data{
+//       flex-direction: column;
+//     }
+//     .data label{
+//     display:none;
+//     }
+   
+//     .data .btn{
+//       width:100%;
+//     }
+//     .data .appfilter{
+//       width:100%;
+//     }
+   
+//     .DisTable{
+//         overflow-x: auto;
+       
+//       }
+//   }
+
+// .main-content {
+//     background: #ffff;
+//     padding: 1rem;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     width: 100%;
+// }
+
+// .no-cursor {
+//     caret-color: transparent;
+//   }
+
+// .aboveContent {
+   
+//     flex-wrap: wrap;
+//     gap: 15px;
+//     font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
+// }
+// ::ng-deep .mat-input-element{
+// height: 40px !important;
+
+
+// }
+
+
+
+// ::ng-deep .list_filters .mat-form-field-flex > .mat-form-field-infix {padding: 0.2em 0px 0.5em 0px !important}
+//   ::ng-deep .list_filters .mat-select-arrow {
+//     width: 0;
+//     height: 0;
+//     border-left: 5px solid transparent;
+//     border-right: 5px solid transparent;
+//     border-top: 5px solid;
+//     margin: 7px 4px 0px 4px;
+// }
+// ::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-label { margin-top: -10px; }
+// ::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: #a2dbf1;
+//   }
+
+// ::ng-deep .list_filters .mat-select-panel{
+//     background-color: red !important;
+// } 
+
+// ::ng-deep #swal2-title{
+//     font-size: 14px;
+//   }
+
+// ::ng-deep .swal2-popup{
+//     padding: 0px !important;
+//     height: auto;
+//     min-width: 250px;
+//     width: auto;
+
+// }
+
+// ::ng-deep .swal2-icon {
+//     position: relative;
+//     box-sizing: content-box;
+//     justify-content: center;
+//     width: 5em;
+//     height: 5em;
+//     margin: 0.5em auto -0.4em;
+//     border: 0.25em solid rgba(0,0,0,0);
+//     border-radius: 50%;
+//     border-color: #000;
+//     font-family: inherit;
+//     line-height: 5em;
+//     cursor: default;
+//     user-select: none;
+// }
+
+
+
+// .btn {
+//     background-color: #0466BF;
+//     color: #fff;
+//     width: 59px;
+//     font-size: 12px;
+//     border: none;
+//     // border-radius: 40px;
+//     padding: 4.5px;
+//     margin-right: 5px;
+// }
+
+// .btn-warning {
+//     background-color: #e72c2c !important;
+// }
+
+
+// .input-field input{
+//     flex: 1;
+//     height: 40px; /* Set the desired height for consistency */
+//     outline: none;
+//     border-radius: 4px;
+//     padding: 0rem .5rem;
+// }
+// .input-field select {
+//     flex: 1;
+
+//     height: 50px;
+//     outline: none;
+//     border-radius: 4px;
+  
+//     padding: 0rem .5rem;
+// }
+
+// .input-field input:focus,
+// .input-field select:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(253, 13, 73, 0.25);
+// }
+
+
+// .labels {
+//     max-width: 128px;
+//     width: 100%;
+// }
+
+// .mat-form-field {
+//     width: 100%;
+// }
+
+// .afterDiv {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 1rem 0rem;
+//     margin-top: 10px;
+//     gap: 10px;
+//     flex-wrap: wrap;
+// }
+
+// .afterContent {
+//     display: flex;
+//     align-items: center;
+//     flex: 1;
+//     gap: 5px;
+
+// }
+
+// .deleteIcon {
+//     color: red;
+//     padding-left: 6px;
+// }
+
+// .afterContent input,
+// .afterContent select {
+//     flex: 1;
+//     height: 30px;
+//     outline: none;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     padding: 0rem .5rem;
+// }
+
+// .afterContent input:focus,
+// .afterContent select:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+// }
+
+// .mselect {
+//     flex: 1;
+//     height: 30px;
+//     outline: none;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     padding: 0.2rem 0.5rem;
+ 
+// }
+
+// .qinput {
+//     width: 100%;
+//     height: 50px;
+//     padding: 8px
+// }
+
+// .qinput:focus {
+//     color: #212529;
+//     background-color: #fff;
+//     border-color: #86b7fe;
+//     outline: 0;
+//     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+// }
+
+// .msg {
+//     color: red;
+//     text-align: center;
+// }
+
+
+// .tableDatas{
+//     width: 100%;
+// }
+
+
+// .filter_individual {
+//     display: flex;
+//     margin-bottom: 20px;
+    
+// }
+
+// .filter_individual .mselect {
+//     width: 170px;
+// }
+
+// .filter_individual .label {
+//     margin-top: 5px;
+//     margin-right: 2px;
+// }
+
+// h1 {
+//     text-align: center;
+//     color: gray;
+// }
+
+// @media screen and (max-width:1036px) {
+//     .input-field {
+//         width: 100%;
+//     }
+// }
+// @media screen and (max-width:404px){
+   
+// }
+// @media screen and (max-width:430px) {
+//     .filters {
+//         display: flex;
+//         max-width: 100%;
+//         flex-direction: column;
+      
+    
+//    }
+// }
+// @media screen and (max-width:412px) {
+//     .input-field{
+//         flex-flow: column;
+//         align-items: flex-start;
+//         width:100%;
+//     }
+//     .input-field input,
+//     .input-field select{
+//         width: 100%;
+//         flex: auto;
+//     }
+
+//     .afterDiv {
+//         flex-flow: column;
+//     }
+
+   
+//     .filters {
+//          display: flex;
+//          flex-direction: column;       
+     
+//     }
+//     .filter_individual {
+//         width: 100%;
+        
+//     margin-bottom: 10px;
+//     }
+// }
+
+
+// .data{
+//   display:flex;
+//   align-items:center;
+//   margin-bottom: 20px;
+//   gap:6px;
+// }
+
+
+// .btn {
+//     background-color: #0466BF;
+//     color: #fff;
+//     width: 90px;
+//     font-size: 12px;
+//     border: none;
+//     border-radius: 5px;
+//     padding: 4.5px;
+//   }
+
+//   .ColRed{
+//     color:rgb(194, 96, 112);
+//   }
+
+//   .DisTable{
+//     overflow-x: auto;
+//     width: 100%;
+//   }
+
+//   h1 {
+//     text-align: center;
+//     color: grey;
+//   }
+
+
+//   @media only screen and (max-width: 670px) {
+//     .data{
+//     align-items: flex-start;
+//     }
+//   }
+
+//   @media only screen and (max-width: 500px) {
+//     .data{
+//       flex-direction: column;
+//     }
+//     .data label{
+//     display:none;
+//     }
+    
+//     .data .btn{
+//       width:100%;
+//     }
+//     .data .appfilter{
+//       width:100%;
+//     }
+    
+//     .DisTable{
+//         overflow-x: auto;
+       
+//       }
+//   }
+
+.main-content {
+    background: #ffff;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+ 
+.no-cursor {
+    caret-color: transparent;
+  }
+ 
+.aboveContent {
+   
+    flex-wrap: wrap;
+    gap: 15px;
+    font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
+}
+::ng-deep .list_filters .mat-form-field-flex > .mat-form-field-infix {padding: 0.2em 0px 0.5em 0px !important}
+  ::ng-deep .list_filters .mat-select-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+    margin: 7px 4px 0px 4px;
+}
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-label { margin-top: -10px; }
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #a2dbf1;
+  }
+ 
+::ng-deep .list_filters .mat-select-panel{
+    background-color: red !important;
+}
+ 
+::ng-deep #swal2-title{
+    font-size: 14px;
+  }
+ 
+::ng-deep .swal2-popup{
+    padding: 0px !important;
+    height: auto;
+    min-width: 250px;
+    width: auto;
+ 
+}
+ 
+::ng-deep .swal2-icon {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    margin: 0.5em auto -0.4em;
+    border: 0.25em solid rgba(0,0,0,0);
+    border-radius: 50%;
+    border-color: #000;
+    font-family: inherit;
+    line-height: 5em;
+    cursor: default;
+    user-select: none;
+}
+ 
+ 
+ 
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 59px;
+    font-size: 12px;
+    border: none;
+    // border-radius: 40px;
+    padding: 4.5px;
+    margin-right: 5px;
+}
+ 
+.btn-warning {
+    background-color: #e72c2c !important;
+}
+ 
+ 
+.input-field input,
+.input-field select {
+    flex: 1;
+ 
+    height: 50px;
+    outline: none;
+    border-radius: 4px;
+ 
+    padding: 0rem .5rem;
+}
+ 
+.input-field input:focus,
+.input-field select:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(253, 13, 73, 0.25);
+}
+ 
+ 
+.labels {
+    max-width: 128px;
+    width: 100%;
+}
+ 
+.mat-form-field {
+    width: 100%;
+}
+ 
+.afterDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    margin-top: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+ 
+.afterContent {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 5px;
+ 
+}
+ 
+.deleteIcon {
+    color: red;
+    padding-left: 6px;
+}
+ 
+.afterContent input,
+.afterContent select {
+    flex: 1;
+    height: 30px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0rem .5rem;
+}
+ 
+.afterContent input:focus,
+.afterContent select:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+ 
+.mselect {
+    flex: 1;
+    height: 30px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0.2rem 0.5rem;
+ 
+}
+ 
+.qinput {
+    width: 100%;
+    height: 50px;
+    padding: 8px
+}
+ 
+.qinput:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+ 
+.msg {
+    color: red;
+    text-align: center;
+}
+ 
+ 
+.tableDatas{
+    width: 100%;
+}
+ 
+ 
+.filter_individual {
+    display: flex;
+    margin-bottom: 20px;
+   
+}
+ 
+.filter_individual .mselect {
+    width: 170px;
+}
+ 
+.filter_individual .label {
+    margin-top: 5px;
+    margin-right: 2px;
+}
+ 
+h1 {
+    text-align: center;
+    color: gray;
+}
+ 
+@media screen and (max-width:1036px) {
+    .input-field {
+        width: 100%;
+    }
+}
+@media screen and (max-width:404px){
+   
+}
+@media screen and (max-width:430px) {
+    .filters {
+        display: flex;
+        max-width: 100%;
+        flex-direction: column;
+     
+   
+   }
+}
+@media screen and (max-width:412px) {
+    .input-field{
+        flex-flow: column;
+        align-items: flex-start;
+        width:100%;
+    }
+    .input-field input,
+    .input-field select{
+        width: 100%;
+        flex: auto;
+    }
+ 
+    .afterDiv {
+        flex-flow: column;
+    }
+ 
+   
+    .filters {
+         display: flex;
+         flex-direction: column;      
+     
+    }
+    .filter_individual {
+        width: 100%;
+       
+    margin-bottom: 10px;
+    }
+}
+ 
+ 
+.data{
+  display:flex;
+  align-items:center;
+  margin-bottom: 20px;
+  gap:6px;
+}
+ 
+ 
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 90px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+  }
+ 
+  .ColRed{
+    color:rgb(194, 96, 112);
+  }
+ 
+  .DisTable{
+    overflow-x: auto;
+    width: 100%;
+    
+
+  }
+ 
+  h1 {
+    text-align: center;
+    color: grey;
+  }
+ 
+ 
+  @media only screen and (max-width: 670px) {
+    .data{
+    align-items: flex-start;
+    }
+  }
+ 
+  @media only screen and (max-width: 500px) {
+    .data{
+      flex-direction: column;
+    }
+    .data label{
+    display:none;
+    }
+   
+    .data .btn{
+      width:100%;
+    }
+    .data .appfilter{
+      width:100%;
+    }
+   
+    .DisTable{
+        overflow-x: auto;
+       
+      }
+  }
+
+  
+
+  

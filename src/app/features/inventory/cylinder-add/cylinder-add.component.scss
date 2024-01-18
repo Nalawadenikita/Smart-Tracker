@@ -1,0 +1,152 @@
+.cylindercontainer {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.form-select {
+    display: flex;
+    flex-direction: row;
+
+    flex: 1;
+}
+
+.inputState {
+    flex: 1;
+}
+
+.labelcylinder {
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.8rem !important;
+    margin-right: 8px !important;
+}
+
+.form-control {
+
+    max-width: 100% !important;
+    margin-left: 3px;
+    height: 49px;
+}
+
+.btn {
+    width: 84px;
+}
+
+#gridCheck {
+    margin-left: 5px !important;
+}
+
+.validationfield {
+    width: 580px !important;
+}
+
+.cylendermain {
+    flex: 1;
+}
+
+.mat-form-field {
+    display: block;
+}
+
+.buttons {
+    float: right;
+}
+
+
+@media screen and (max-width:"576px") {
+    .cylindercontainer {
+        display: flex !important;
+        flex-direction: column !important;
+        max-width: 100% !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        margin-top: 8px !important;
+
+    }
+
+    .labelcylinder {
+
+        margin-top: 0.8rem !important;
+    }
+
+    .cylinderinput {
+
+        margin-top: 8px !important;
+
+    }
+
+    .labelcylinder {
+        margin-bottom: 0.5rem !important;
+        margin-top: 0.8rem !important;
+        margin-right: 8px !important;
+        width: 100px;
+    }
+
+    .inputState {
+        margin-top: 8px !important;
+    }
+
+    .inputfield {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100%;
+
+        margin-left: 24px;
+
+    }
+    
+
+    .form-control {
+        // max-width: 269px !important;
+        margin-left: 1px !important;
+        height: 2.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+
+    }
+
+    .cylendermain {
+        width: 135px !important;
+    }
+
+    
+    
+   
+}
+
+::ng-deep .swal2-popup{
+    padding: 0px !important;
+    height: auto;
+    min-width: 250px;
+    width: auto;
+
+}
+::ng-deep #swal2-title{
+    font-size: 14px;
+}
+::ng-deep .swal2-styled {
+    padding: 8px;
+    transition: box-shadow .1s;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0);
+    font-weight: 500;
+  }
+
+
+
+  ::ng-deep .swal2-icon {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    margin: 0.5em auto -0.4em;
+    border: 0.25em solid rgba(0,0,0,0);
+    border-radius: 50%;
+    border-color: #000;
+    font-family: inherit;
+    line-height: 5em;
+    cursor: default;
+    user-select: none;
+}

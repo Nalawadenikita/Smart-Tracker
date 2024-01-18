@@ -1,0 +1,80 @@
+.details {
+    background-color: #fff;
+}
+
+.details_label {
+    font-weight: 500;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.arrow {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 40px;
+    margin-right: 10px;
+    padding: 6px;
+    margin-top: -7px;
+    background-color: #0466BF;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 38px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+    float: right;
+    margin-bottom: 15px;
+    margin-top: -9px;
+    margin-left: auto;
+  }
+
+
+.pdf{
+    width: 40px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+
+.arrow:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition-duration: 300ms;
+}
+
+table{
+    width:100%;
+}
+
+table th{
+    text-align:left;
+    background-color: #EEEEEE;
+    padding: 10px;
+    font-weight:500;
+    
+}
+table tr{
+    border-bottom:0.5px solid #ddd
+}
+table td{
+    background-color:white;
+    padding:5px;
+}
+
+
+::ng-deep .list_filters .mat-form-field-flex > .mat-form-field-infix { padding: 0.5em 0px !important;}
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-label { margin-top: -10px; }
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #a2dbf1;
+  }
+
+ ::ng-deep .list_filters .mat-select-panel{
+    background-color: red !important;
+}

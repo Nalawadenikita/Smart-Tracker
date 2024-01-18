@@ -1,0 +1,45 @@
+<div *ngIf="isLoading  " style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center">
+
+    <div >
+        <mat-spinner [diameter]="75"></mat-spinner>
+    </div>
+    </div>
+<div class="data">
+    <h3 id="header"><b>Daily Sales Reports:</b></h3>
+    
+    <img class="pdf"  (click)="getImage()" src="assets/pdfimg.png" />
+    
+    </div>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Location</th>
+            <th>Gas Type</th>
+            <th>Cylinder Size</th>
+            <th>Cylinder Code</th>
+            <th>DCID</th>
+          </tr>
+
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let record of endData; let i=index;">
+            <tr *ngIf="!record.total">
+                <td>{{record.customer_name}}</td>
+                <td>{{record.location}}</td>
+                <td>{{record.GasType}}</td>
+                <td>{{record.cylinderSize}}</td>
+                <td>{{record.cylinderCode}}</td>
+                <td>{{record.t_code}}</td>
+            </tr>
+            <tr *ngIf="record.total">
+                <td class="fw-bold text-primary" *ngIf="record.total" colspan="7">
+                   Total Cylinders with Customer {{endData[i-1].customer_name}} is  {{ record.total }}
+                  </td>
+            </tr>
+
+        </ng-container>
+
+    </tbody>
+</table>

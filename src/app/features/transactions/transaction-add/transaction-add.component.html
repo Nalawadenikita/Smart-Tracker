@@ -1,0 +1,707 @@
+<!-- <div class="main-content">
+  <form [formGroup]="transactionForm" class="form-group" (ngSubmit)="addTransactions()">
+    <b>Transaction add</b>
+    <hr />
+    <div class="aboveContent">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Transaction Type</mat-label>
+            <mat-select (selectionChange)="onTransactionTypeChange($event)" formControlName="transactionType"
+              class="selectType" (selectionChange)="selectedTransType($event)" [ngClass]="{
+                'is-invalid': submitted && dist['transactionType'].errors
+              }">
+              <mat-option *ngFor="let type of transactionType" [value]="type['id']">
+                {{ type["typeName"] }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['transactionType'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['transactionType'].errors?.['required']">
+                Transaction type is required
+              </div>
+ 
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="!isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Customer Name</mat-label>
+             <mat-select formControlName="customerId" class="aselect" (selectionChange)="selectedCustomerType($event)"
+              [ngClass]="{
+              'is-invalid': submitted && dist['customerId'].errors}">
+             
+              <mat-option *ngFor="let type of customerList" [value]="type['id']">
+                {{ type["name"]}}
+              </mat-option>
+            </mat-select>
+           
+            <mat-select formControlName="customerId" class="aselect" (selectionChange)="selectedCustomerType($event)"
+              [ngClass]="{'is-invalid': submitted && dist['customerId'].errors}" >
+              <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" >
+              <mat-option *ngFor="let type of customerList" [value]="type['id']">
+                {{ type["name"] }}
+              </mat-option>
+            </mat-select>
+ 
+            <mat-error *ngIf="submitted && dist['customerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['customerId'].errors?.['required']">
+                Customer name is required
+              </div>
+ 
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Refiller Name</mat-label>
+            <mat-select formControlName="refillerId" class="aselect" (selectionChange)="selectedRefillerType($event)"
+              [ngClass]="{
+              'is-invalid': submitted && dist['refillerId'].errors}">
+              <mat-option *ngFor="let type of refillerLIst" [value]="type['id']">
+                {{ type["name"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['refillerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['refillerId'].errors?.['required']">
+                Refiller name is required
+              </div>
+ 
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Site Location</mat-label>
+            <mat-select formControlName="locationName" class="aselect" [disabled]="transType == 3 || transType == 4">
+              <mat-option [value]="''">
+                --Option--
+              </mat-option>
+              <mat-option *ngFor="let type of siteList" [value]="type['locationId']['locationId']">
+                {{ type["locationId"]["locationName"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['locationName'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['locationName'].errors?.['required']">
+                Site location is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+        <div class="col-md-6" *ngIf="transType == 1 || transType ==3">
+          <mat-form-field appearance="outline" class="input-field" style="height:40px !important">
+            <mat-label>DC Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }" >
+       
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size:.720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                DC no. is required
+              </div>
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger"
+                style="font-size:.720rem; margin-top: 0px;">
+                Maximum 6 digit DC number allowed.
+              </div>
+ 
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+        <div class="col-md-6" *ngIf="transType == 2 || transType == 4">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>ECR Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }">
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                ECR no. is required
+              </div>
+ 
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger">
+                Maximum 6 digit DC number allowed.
+              </div>
+ 
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Choose a date</mat-label>
+            <input [max]="todays_date" [min]="minDate" formControlName="transactionDate" matInput
+              [matDatepicker]="_transaction_date_picker" [ngClass]="{
+                'is-invalid': submitted && dist['transactionDate'].errors
+              }" (dateChange)="resetTodaysDate()" class="no-cursor">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="_transaction_date_picker"></mat-datepicker-toggle>
+            <mat-datepicker #_transaction_date_picker></mat-datepicker>
+            <mat-error *ngIf="submitted && dist['transactionDate'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf="dist['transactionDate'].errors?.['required']">
+                Date is required
+              </div>
+              <div *ngIf="dist['transactionDate'].errors['invalidDate']">Enter valid date</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+ 
+        <div class="col-md-12">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Leave a comment (Optional) max 500 character</mat-label>
+            <textarea matInput formControlName="comment" [maxlength]="500"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 pl-2 mt-1 mb-2 d-flex align-items-center justify-content-between ">
+ 
+          <div class="  fw-bold">
+            <span class=" QuantInput">Quantity: <span style="font-size: large"> {{totalQuantity}} </span> </span>
+          </div>
+          <div class="" style="text-align: right;">
+       
+            <button type="button" class="btn m-0" (click)="addTransactions()"
+              [disabled]="transactionInProgress">Save</button>
+            <button (click)="cancelBtn()" class="btn btn-warning ms-2">Cancel</button>
+          </div>
+ 
+        </div>
+ 
+        <div *ngIf="transType" class="p-0 m-0 row justify-content-around list_filters">
+          <div class="col-md-4 col-sm-3 " style="height: 40px;">
+            <mat-form-field appearance="outline" class="input-field">
+             
+              <mat-select class="aselect" (selectionChange)="selectedGas($event)" placeholder="Filter by gas type">
+                <mat-option [value]=" ">
+                  --Option--
+                </mat-option>
+                <mat-option *ngFor="let type of gastype" [value]="type['id']">
+                  {{ type["gasName"] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+ 
+          <div class="col-md-4 col-sm-3">
+            <mat-form-field appearance="outline" class="input-field">
+         
+              <mat-select class="aselect" (selectionChange)="selectedCylinder($event)"
+                placeholder="Filter by cylinder size">
+                <mat-option [value]="">
+                  --Option--
+                </mat-option>
+                <mat-option *ngFor="let type of CylinderSize" [value]="type['id']">
+                  {{ type["cylinderType"] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+ 
+          <div class="col-md-4 col-sm-3" style="height:50px !important;">
+            <mat-form-field appearance="outline">
+               <mat-label>Filter by cylinder size</mat-label>
+            <input matInput placeholder="Filter by cylinder code"  [(ngModel)]="cylinderCode" (input)="getCylindersByFilter()" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div *ngIf="transType" class="tableDatas" style="overflow-x: auto;">
+      <app-table class="reports" [tableData]="cylinderData" [displayedColumns]="CylinderCol"  [enableSelectAll]="enableSelect" [totalRecords]="totalRecords" [totalPages]="totalPages" [currentPage]="currentPage"
+      (pageIndexCalculator)="pageIndexCalculator($event)"></app-table>
+      <h1 *ngIf="cylinderData.length == 0">List not available</h1>
+    </div>
+  </form>
+ {{transactionForm.get("customerId")?.value}}
+</div> -->
+
+
+<!-- <div class="main-content">
+  <form [formGroup]="transactionForm" class="form-group" (ngSubmit)="addTransactions()">
+    <b>Transaction add</b>
+    <hr />
+    <div class="aboveContent">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Transaction Type</mat-label>
+            <mat-select (selectionChange)="onTransactionTypeChange($event)" formControlName="transactionType"
+              class="selectType" (selectionChange)="selectedTransType($event)" [ngClass]="{
+                'is-invalid': submitted && dist['transactionType'].errors
+              }">
+              <mat-option *ngFor="let type of transactionType" [value]="type['id']">
+                {{ type["typeName"] }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['transactionType'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['transactionType'].errors?.['required']">
+                Transaction type is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="!isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Customer Name</mat-label>
+             <mat-select formControlName="customerId" class="aselect" (selectionChange)="selectedCustomerType($event)"
+              [ngClass]="{
+              'is-invalid': submitted && dist['customerId'].errors}">
+              
+              <mat-option *ngFor="let type of customerList" [value]="type['id']">
+                {{ type["name"]}}
+              </mat-option>
+            </mat-select> 
+            
+            <mat-select formControlName="customerId" class="aselect" (selectionChange)="selectedCustomerType($event)"
+              [ngClass]="{'is-invalid': submitted && dist['customerId'].errors}" >
+              <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" >
+              <mat-option *ngFor="let type of customerList" [value]="type['id']">
+                {{ type["name"] }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="submitted && dist['customerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['customerId'].errors?.['required']">
+                Customer name is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Refiller Name</mat-label>
+            <mat-select formControlName="refillerId" class="aselect" (selectionChange)="selectedRefillerType($event)"
+              [ngClass]="{
+              'is-invalid': submitted && dist['refillerId'].errors}">
+              <mat-option *ngFor="let type of refillerLIst" [value]="type['id']">
+                {{ type["name"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['refillerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['refillerId'].errors?.['required']">
+                Refiller name is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Site Location</mat-label>
+            <mat-select formControlName="locationName" class="aselect" [disabled]="transType == 3 || transType == 4">
+              <mat-option [value]="''">
+                --Option--
+              </mat-option>
+              <mat-option *ngFor="let type of siteList" [value]="type['locationId']['locationId']">
+                {{ type["locationId"]["locationName"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['locationName'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['locationName'].errors?.['required']">
+                Site location is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" *ngIf="transType == 1 || transType ==3">
+          <mat-form-field appearance="outline" class="input-field" style="height:40px !important">
+            <mat-label>DC Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }" >
+       
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size:.720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                DC no. is required
+              </div>
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger"
+                style="font-size:.720rem; margin-top: 0px;">
+                Maximum 6 digit DC number allowed.
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" *ngIf="transType == 2 || transType == 4">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>ECR Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }">
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                ECR no. is required
+              </div>
+
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger">
+                Maximum 6 digit DC number allowed.
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Choose a date</mat-label>
+            <input [max]="todays_date" [min]="minDate" formControlName="transactionDate" matInput
+              [matDatepicker]="_transaction_date_picker" [ngClass]="{
+                'is-invalid': submitted && dist['transactionDate'].errors
+              }" (dateChange)="resetTodaysDate()" class="no-cursor">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="_transaction_date_picker"></mat-datepicker-toggle>
+            <mat-datepicker #_transaction_date_picker></mat-datepicker>
+            <mat-error *ngIf="submitted && dist['transactionDate'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf="dist['transactionDate'].errors?.['required']">
+                Date is required
+              </div>
+              <div *ngIf="dist['transactionDate'].errors['invalidDate']">Enter valid date</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Leave a comment (Optional) max 500 character</mat-label>
+            <textarea matInput formControlName="comment" [maxlength]="500"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 pl-2 mt-1 mb-2 d-flex align-items-center justify-content-between ">
+
+          <div class="  fw-bold">
+            <span class=" QuantInput">Quantity: <span style="font-size: large"> {{totalQuantity}} </span> </span>
+          </div>
+          <div class="" style="text-align: right;">
+        
+            <button type="button" class="btn m-0" (click)="addTransactions()"
+              [disabled]="transactionInProgress">Save</button>
+            <button (click)="cancelBtn()" class="btn btn-warning ms-2">Cancel</button>
+          </div>
+
+        </div>
+
+        <div *ngIf="transType" class="p-0 m-0 row justify-content-around list_filters">
+          <div class="col-md-4 col-sm-3 " style="height: 40px;">
+            <mat-form-field appearance="outline" class="input-field">
+             
+              <mat-select class="aselect" (selectionChange)="selectedGas($event)" placeholder="Filter by gas type">
+                <mat-option [value]=" ">
+                  --Option--
+                </mat-option>
+                <mat-option *ngFor="let type of gastype" [value]="type['id']">
+                  {{ type["gasName"] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4 col-sm-3">
+            <mat-form-field appearance="outline" class="input-field">
+         
+              <mat-select class="aselect" (selectionChange)="selectedCylinder($event)"
+                placeholder="Filter by cylinder size">
+                <mat-option [value]="">
+                  --Option--
+                </mat-option>
+                <mat-option *ngFor="let type of CylinderSize" [value]="type['id']">
+                  {{ type["cylinderType"] }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4 col-sm-3" style="height:50px !important;">
+            <mat-form-field appearance="outline">
+               <mat-label>Filter by cylinder size</mat-label> 
+            <input matInput placeholder="Filter by cylinder code"  [(ngModel)]="cylinderCode" (input)="getCylindersByFilter()" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="transType" class="tableDatas" style="overflow-x: auto;">
+      <app-table class="reports" [tableData]="cylinderData" [displayedColumns]="CylinderCol"  [enableSelectAll]="enableSelect" [totalRecords]="totalRecords" [totalPages]="totalPages" [currentPage]="currentPage"
+      (pageIndexCalculator)="pageIndexCalculator($event)"></app-table>
+      <h1 *ngIf="cylinderData.length == 0">List not available</h1>
+    </div>
+  </form>
+ {{transactionForm.get("customerId")?.value}} 
+</div> -->
+
+
+<div class="main-content">
+  <form [formGroup]="transactionForm" class="form-group" (ngSubmit)="addTransactions()">
+    <b>{{label}}</b>
+    <hr />
+    <div class="aboveContent">
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Transaction Type</mat-label>
+            <mat-select (selectionChange)="onTransactionTypeChange($event)" formControlName="transactionType"
+              class="selectType" (selectionChange)="selectedTransType($event)" [ngClass]="{
+                'is-invalid': submitted && dist['transactionType'].errors
+              }">
+              <mat-option *ngFor="let type of transactionType" [value]="type['id']">
+                {{ type["typeName"] }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['transactionType'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['transactionType'].errors?.['required']">
+                Transaction type is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="!isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Customer Name</mat-label>
+            <mat-select formControlName="customerId" class="aselect" (selectionChange)="selectedCustomerType($event)"
+              [ngClass]="{'is-invalid': submitted && dist['customerId'].errors}">
+              <input matInput (input)="customerInputChange($event)" placeholder="Search Customer" style="height: 50px;">
+              <mat-option [value]="''">
+                --Option--
+              </mat-option>
+              <mat-option *ngFor="let type of customerList" [value]="type['id']">
+                {{ type["name"] }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['customerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['customerId'].errors?.['required']">
+                Customer name is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="isThisRefillerTransaction" class="col-sm-6">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Refiller Name</mat-label>
+            <mat-select formControlName="refillerId" class="aselect" (selectionChange)="selectedRefillerType($event)"
+              [ngClass]="{
+              'is-invalid': submitted && dist['refillerId'].errors}">
+              <mat-option *ngFor="let type of refillerLIst" [value]="type['id']">
+                {{ type["name"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['refillerId'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['refillerId'].errors?.['required']">
+                Refiller name is required
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6" *ngIf="!isEdit">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Site Location</mat-label>
+            <mat-select formControlName="locationName" class="aselect" [disabled]="transType == 3 || transType == 4">
+              <mat-option [value]="''">
+                --Option--
+              </mat-option>
+              <mat-option *ngFor="let type of siteList" [value]="type['locationId']['locationId']">
+                {{ type["locationId"]["locationName"]}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && dist['locationName'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['locationName'].errors?.['required']">
+                Site location is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" *ngIf="transType == 1 || transType ==3">
+          <mat-form-field appearance="outline">
+            <mat-label>DC Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }">
+            <!-- <mat-error *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger">
+              Maximum 6 digit DC number allowed.
+            </mat-error> -->
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size:.720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                DC no. is required
+              </div>
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger"
+                style="font-size:.720rem; margin-top: 0px;">
+                Maximum 6 digit DC number allowed.
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" *ngIf="transType == 2 || transType == 4">
+          <mat-form-field appearance="outline">
+            <mat-label>ECR Number</mat-label>
+            <input formControlName="ecDcNumber" [maxlength]="6" matInput (keydown)="validateNumber($event)" [ngClass]="{
+              'is-invalid': submitted && dist['ecDcNumber'].errors
+            }">
+            <mat-error *ngIf="submitted && dist['ecDcNumber'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf=" dist['ecDcNumber'].errors?.['required']">
+                ECR no. is required
+              </div>
+
+              <div *ngIf="dist['ecDcNumber'].errors?.['maxlength']" class="text-danger">
+                Maximum 6 digit DC number allowed.
+              </div>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input [max]="maxDate" [min]="minDate" formControlName="transactionDate" matInput
+              [matDatepicker]="_transaction_date_picker" [ngClass]="{
+                'is-invalid': submitted && dist['transactionDate'].errors
+              }" (dateChange)="resetTodaysDate()" class="no-cursor">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="_transaction_date_picker"></mat-datepicker-toggle>
+            <mat-datepicker #_transaction_date_picker></mat-datepicker>
+            <mat-error *ngIf="submitted && dist['transactionDate'].errors" class="invalid-feedback"
+              style="font-size: .720rem; margin-top: 0px;">
+              <div class="text-danger" *ngIf="dist['transactionDate'].errors?.['required']">
+                Date is required
+              </div>
+              <div *ngIf="dist['transactionDate'].errors['invalidDate']">Enter valid date</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Leave a comment (Optional) max 500 character</mat-label>
+            <textarea matInput formControlName="comment" [maxlength]="500" style="height: 20px;"></textarea>
+          </mat-form-field>
+        </div>
+        <!--         
+         <div *ngIf="getAllCylinderCodes(selectCheckbox).length > 0">
+          <div class="list-heading">
+            <strong>List of Selected Cylinder Code Items:</strong>
+          </div>
+          <textarea readonly style="width: 100%; border: 1px solid rgb(221, 209, 209);">{{getAllCylinderCodes(selectCheckbox)}}</textarea>
+
+        </div> -->
+
+
+
+        <!-- Use getSelectedCylinderCodes in your template -->
+        <!-- <div *ngIf="getSelectedCylinderCodes().length > 0">
+        <div class="list-heading">
+          <strong>List of Selected Cylinder Code Items:</strong>
+        </div>
+        <textarea readonly style="width: 100%;  border: 1px solid rgb(221, 209, 209); height: 60px; font-family: math;">
+          {{ getSelectedCylinderCodes() | trim }}
+         
+        </textarea>
+      </div> -->
+
+
+
+        <div *ngIf="getSelectedCylinderCodes().length > 0">
+          <div class="list-heading">
+            <strong>List of Selected Cylinder Code Items:</strong>
+          </div>
+          <div>
+            <textarea readonly
+              style="width: 100%; border: 1px solid rgb(221, 209, 209); height: 60px; font-family: math;">{{ getSelectedCylinderCodes().trim()}}</textarea>
+          </div>
+        </div>
+
+
+        <div class="col-md-12 pl-2 mt-1 mb-2 d-flex align-items-center justify-content-between ">
+          <div class="  fw-bold">
+            <span class=" QuantInput">Quantity: <span style="font-size: large"> {{totalQuantity}} </span> </span>
+          </div>
+          <div class="" style="text-align: right;">
+            <!-- <button [disabled]="transactionInProgress || !transactionForm.valid" type="button" class="btn m-0"
+              (click)="addTransactions()">Save</button> -->
+            <button type="button" class="btn m-0" (click)="isEdit ? editTransaction() : addTransactions()"
+              [disabled]="transactionInProgress">Save</button>
+            <button (click)="cancelBtn()" class="btn btn-warning ms-2">Cancel</button>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </form>
+  <div *ngIf="transType" class="p-0 m-0 row justify-content-around list_filters">
+    <div class="col-md-4 col-sm-3 " style="height: 40px;">
+      <mat-form-field appearance="outline" class="input-field">
+        <!-- <mat-label>Filter by gas type</mat-label> -->
+        <mat-select class="aselect" (selectionChange)="renderListThroughSearch()" [(value)]="selectGas"
+          placeholder="Filter by gas type" multiple>
+          <mat-option *ngFor="let type of gastype" [value]="type['id']">
+            {{ type["gasName"] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-sm-3">
+      <mat-form-field appearance="outline" class="input-field">
+        <!-- <mat-label>Filter by cylinder size</mat-label> -->
+        <mat-select class="aselect" (selectionChange)="renderListThroughSearch()" placeholder="Filter by cylinder size"
+          [(value)]="selectSize" multiple>
+          <mat-option *ngFor="let type of CylinderSize" [value]="type['id']">
+            {{ type["cylinderType"] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4 col-sm-3">
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Filter by cylinder size</mat-label> -->
+        <!-- (input)="checkVal($event)" -->
+        <input matInput placeholder="Filter by cylinder code and QR code" (keydown.enter)="getSearchValue($event)"
+          [(ngModel)]="searchQuery_1" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+   
+
+  <div *ngIf="transType" class="tableDatas" style="overflow-x: auto;">
+    <app-table class="reports" [tableData]="cylinderData" [displayedColumns]="CylinderCol"
+      [checklist]="transaction_page_checklist" [enableSelectAll]="enableSelect" [totalRecords]="totalRecords"
+      [totalPages]="totalPages" [currentPage]="currentPage"
+      (pageIndexCalculator)="pageIndexCalculator($event)"></app-table>
+    <h1 *ngIf="cylinderData.length == 0">List not available</h1>
+  </div>
+</div>

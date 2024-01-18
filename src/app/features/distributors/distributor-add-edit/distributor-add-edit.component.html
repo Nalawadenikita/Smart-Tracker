@@ -1,0 +1,151 @@
+<app-loader></app-loader>
+<div class="container">
+
+  <div class="mainclass">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <b>{{label}}</b>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="distForm" id="distributorform" class="row g-4" (ngSubmit)="formData ? edit() : add()">
+            <div class="col-md-6 d-flex gap-2 distributerdiv ">
+              <!-- <label for="inputName" class="form-label distributerlable"> Name <sup>*</sup> </label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['name'].errors }" (keydown)="validateText($event); restrictInitialSpace($event)">
+
+                <div *ngIf="submitted &&dist['name'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['name'].errors?.['required']">Name is required</div>
+                  <div *ngIf="dist['name'].errors?.['minlength'] && !dist['name'].errors?.['pattern']" class="text-danger">
+                    Name must be at least 3 characters
+                  </div>
+                  <div class="text-danger" *ngIf="dist['name'].errors?.['pattern']">
+                    Name should only contain alphabets and spaces.
+                  </div>
+                </div>
+               
+                <!-- <div class="text-danger" *ngIf="dist['name'].errors?.['minLength']">
+                  *Minimum 3 charecters required.
+                </div> -->
+              </div>
+            </div>
+
+
+            <div class="col-md-6 d-flex gap-2 distributerdiv">
+              <!-- <label for="inputCode" class="form-label distributerlable">Code<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" placeholder="eg. 111111" class="form-control" id="inputCode" formControlName="code"placeholder="Code *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['code'].errors }">
+                <div *ngIf="submitted &&dist['code'].errors" class="invalid-feedback">
+
+                  <div *ngIf="dist['code'].errors?.['required']">Code is required</div>
+                  <div class="text-danger" *ngIf="dist['code'].errors?.['minlength']&& !dist['code']?.hasError('invalidCode')">
+                    Enter minimum 6 digits for Distributor Code .
+                  </div>
+                  <div class="text-danger" *ngIf="dist['code'].errors?.['maxlength']&& !dist['code']?.hasError('invalidCode')">
+                    Enter maximum 6 digits for Distributor Code .
+                  </div>
+                  <div *ngIf="dist['code']?.hasError('invalidCode')">
+                    Distributor code can not put only special characters .
+                    </div>
+                </div>
+                <!-- <div class="text-danger" *ngIf="dist['code'].errors?.['minlength']">
+                  Enter minimum 6 digits for Distributor Code .
+                </div>
+                <div *ngIf="dist['code']?.hasError('invalidCode')">
+                  Distributor code can not put only special characters .
+                  </div> -->
+              </div>
+              
+            </div>
+
+            <div class="col-md-6 d-flex gap-2 distributerdiv ">
+              <!-- <label for="inputCity" class="form-label distributerlable ">City<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="inputCity" formControlName="city" placeholder="City"
+                  [ngClass]="{ 'is-invalid': submitted && dist['city'].errors }" (keydown)="validateText($event); restrictInitialSpace($event)">
+
+
+
+                <div *ngIf="submitted &&dist['city'].errors" class="invalid-feedback">
+
+                  <div *ngIf="dist['city'].errors?.['required']"> City is required</div>
+                  <div class="text-danger" *ngIf="dist['city'].errors?.['pattern']">
+                    City should only contain alphabets and spaces.
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+
+            <div class="col-md-6 d-flex gap-2 distributerdiv">
+              <!-- <label for="inputEmail" class="form-label distributerlable">Email<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['email'].errors }" (keydown)="restrictInitialSpace($event)" >
+
+                
+                <div *ngIf="submitted &&dist['email'].errors" class="invalid-feedback">
+
+                  <div *ngIf="dist['email'].errors?.['required']">Email is required</div>
+                  <small *ngIf="dist['email'].errors?.['pattern'] " class="text-danger">
+                    Please enter  valid email address</small>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 distributerdiv">
+              <!-- <label for="inputPhone" class="form-label distributerlable ">Phone<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Phone no. *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['phone'].errors }" (keydown)="validateNumber($event); restrictInitialSpace($event)">
+               
+                <div *ngIf="submitted &&dist['phone'].errors" class="invalid-feedback">
+
+                  <div *ngIf="dist['phone'].errors?.['required']">Phone no. is required</div>
+                  <div *ngIf="dist['phone'].errors?.['pattern']" class="text-danger">Please enter 10 digit phone number.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6 d-flex gap-2 distributerdiv ">
+              <!-- <label for="inputName4" class="form-label distributerlable" id="username">Username<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="username" formControlName="username" placeholder="Username *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['username'].errors }" (keydown)="restrictInitialSpace($event)" >
+              
+                 
+                <div *ngIf="submitted &&dist['username'].errors" class="invalid-feedback">
+
+                  <div *ngIf="dist['username'].errors?.['required']">Username is required</div>
+                  <div class="text-danger" *ngIf="dist['username'].errors?.['pattern']">
+                    Username should only contain alphabets.
+                  </div>
+                  <div class="text-danger" *ngIf="dist['username'].errors?.['whitespace']">
+                    White space not allowed.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-3 d-flex  distributerdiv ">
+            </div>
+            <div class="button">
+              <input type="submit" class="btn btn-primary" value="Save" />
+
+              <button type="button" class="btn btn-danger" (click)="onclick()">Cancel</button>
+
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

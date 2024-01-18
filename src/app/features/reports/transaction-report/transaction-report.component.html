@@ -1,0 +1,95 @@
+<div class="title d-flex">
+  <span (click)="closeDialog()" class="material-symbols-outlined arrow">
+    arrow_left_alt
+  </span>
+  <h3> 
+    <b>Transaction Details:</b>
+  </h3>
+  <img class="pdf" *ngIf="!isDownloading"   (click)="getImage()" src="assets/pdfimg.png" />
+<div class="spinner-border text-primary" *ngIf="isDownloading"    role="status" style="margin-left:auto;">
+  <span class="sr-only"></span>
+</div>
+</div>
+
+<div class="details row ms-1 pe-3">
+  <div class="details_1 col-md-4 p-0 mb-0">
+    <p class="details_even_rows"> <span *ngIf="isCustomer" class="details_labels ">Customer Name</span> 
+      <span *ngIf="!isCustomer" class="details_labels">Refiller Name</span> <span><b>:</b> {{name | titlecase}}</span> 
+    </p>
+    <p class="details_odd_rows" *ngIf="locationName && isCustomer"> <span class="details_labels" style="margin-right: 44px;">Site Name </span> <span><b>:</b> {{locationName}}</span> </p>
+  </div>
+  <div class="details_2 col-md-4 p-0">
+    <!-- <p class="details_even_rows">
+      <span class="details_labels" >Transaction Type</span>
+      <span *ngIf="isCustomer && dcId"><b>:</b> Distributor To Customer</span>
+      <span *ngIf="isCustomer && ecrId"><b>:</b> Customer To Distributor</span>
+      <span *ngIf="!isCustomer && dcId"><b>:</b> Refiller To Distributor</span>
+      <span *ngIf="!isCustomer && ecrId"><b>:</b> Distributor To Refiller</span>
+    </p>
+     <p class="details_odd_rows" *ngIf="ecrId && isCustomer"> <span class="details_labels" style="margin-right: 42px;">ECR Number </span> <span><b>:</b> {{ecrId}}</span> </p>
+    <p class="details_odd_rows" *ngIf="dcId"> <span class="details_labels" style="margin-right: 42px;">DC Number </span> <span><b>:</b> {{dcId}}</span> </p> 
+    
+     -->
+     <p class="details_even_rows">
+      <span class="details_labels">Transaction Type</span>
+      <span *ngIf="isCustomer && dcId"><b>:</b> Distributor To Customer</span>
+      <span *ngIf="!isCustomer && dcId && !ecrId"><b>:</b> Distributor To Refiller</span>
+      <span *ngIf="isCustomer && ecrId"><b>:</b> Customer To Distributor</span>
+      <span *ngIf="!isCustomer && ecrId"><b>:</b> Refiller To Distributor</span>
+    </p>
+    <p class="details_odd_rows" *ngIf="ecrId && isCustomer"> <span class="details_labels" style="margin-right: 42px;">ECR Number </span> <span><b>:</b> {{ecrId}}</span> </p>
+    <p class="details_odd_rows" *ngIf="dcId && isCustomer && dcId && !ecrId">
+      <span class="details_labels" style="margin-right: 42px;">DC Number </span>
+      <span><b>:</b> {{ dcId }}</span>
+    </p>
+    
+    <p class="details_odd_rows" *ngIf="!isCustomer && !dcId && ecrId">
+      <span class="details_labels" style="margin-right: 42px;">DC Number </span>
+      <span><b>:</b> {{ecrId }}</span>
+    </p>
+    
+    <p class="details_odd_rows" *ngIf="!isCustomer && dcId && !ecrId">
+      <span class="details_labels" style="margin-right: 42px;">ECR Number </span>
+      <span><b>:</b> {{ dcId }}</span>
+    </p>
+    
+  </div>
+  
+  <div class="details_3 col-md-4 p-0">
+    <p class="details_odd_rows" class="details_even_rows"> <span class="details_labels">Transaction Date:</span> <span>{{date}}</span> </p>
+    <!-- <p class="details_odd_rows" *ngIf="!locationName" style="color: #f2f2f2;">date</p> -->
+  </div>
+
+  <div class="details_3 col-md-4 p-0">
+    <p class="details_odd_rows" class="details_even_rows"> <span class="details_labels">comment:</span> <span>{{comment}}</span> </p>
+    <!-- <p class="details_odd_rows" *ngIf="!locationName" style="color: #f2f2f2;">date</p> -->
+  </div>
+
+  
+  <div class="details_3 col-md-4 p-0">
+    <p class="details_odd_rows" class="details_even_rows"> <span class="details_labels">quantity:</span> <span>{{quantity}}</span> </p>
+    <!-- <p class="details_odd_rows" *ngIf="!locationName" style="color: #f2f2f2;">date</p> -->
+  </div>
+</div>
+
+<!-- <button class="btn" style="margin-left:auto;" routerLink="/features/transactions/transaction-list">Back</button> -->
+<table class="cylinderHistory" class="table table-bordered table-sm" id="Transaction">
+  <thead>
+      <tr>
+          <th>Sr.no</th>
+          <th>Gas Type</th>
+          <th>Cylinder Size</th>
+          <th>Cylinder Code</th>
+         <th> Cylinder QR Code </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let record of transactionData; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{record.gasName}}</td>
+          <td>{{record.cylinderType}}</td>
+          <td>{{record.cylinderCode}}</td>
+          <td>{{record.cylinderQrCode ||'-'}}</td>
+      </tr>
+  </tbody>
+</table>

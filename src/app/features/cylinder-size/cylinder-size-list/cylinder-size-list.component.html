@@ -1,0 +1,18 @@
+<div *ngIf="isLoading " style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center" >
+
+    <div >
+        <mat-spinner [diameter]="75"></mat-spinner>
+    </div>
+</div>
+
+
+<h3><b>Cylinder Size List</b></h3>
+<div class="TableData">
+<app-search-filter class="appfilter" (searchedVal)="serchedValue($event)"></app-search-filter>
+<button class="btn2" style="margin-left:auto;" (click)="openDialog()">Add</button>
+</div>
+<div class="DisTable">
+<app-table [tableData]="CylinderList" [displayedColumns]="CylinderCol" [Value]="value" [totalRecords]="totalRecords" [totalPages]="totalPages" [currentPage]="currentPage" (pageIndexCalculator)="pageIndexCalculator($event)" ></app-table>
+</div>
+<!-- <h1 *ngIf="CylinderList.length === 0" >List not available</h1> -->
+

@@ -1,0 +1,71 @@
+.card-body {
+    border: 1px solid #ccc;
+}
+
+.mat-dialog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+
+    overflow: none !important;
+
+    min-height: inherit;
+    max-height: inherit;
+}
+
+.cross {
+    display: flex;
+}
+
+svg {
+    margin-top: -18px;
+    margin-left: auto !important;
+    cursor: pointer;
+    margin-right: -17px;
+    background-color: #dc3545;
+    ;
+    border-radius: 50px;
+}
+
+::ng-deep #swal2-title{
+    font-size: 14px;
+  }
+
+::ng-deep .swal2-popup{
+    padding: 0px !important;
+    height: auto;
+    min-width: 250px;
+    width: auto;
+
+}
+
+::ng-deep .swal2-styled {
+    padding: 8px;
+    transition: box-shadow .1s;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0);
+    font-weight: 500;
+  }
+
+
+  ::ng-deep .swal2-icon {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    margin: 0.5em auto -0.4em;
+    border: 0.25em solid rgba(0,0,0,0);
+    border-radius: 50%;
+    border-color: #000;
+    font-family: inherit;
+    line-height: 5em;
+    cursor: default;
+    user-select: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .form-control {
+        width: 60% !important;
+    }
+}

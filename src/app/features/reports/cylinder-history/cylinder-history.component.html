@@ -1,0 +1,62 @@
+
+
+<div id="title" class="title d-flex ">
+  <span (click)="closeDialog()" class="material-symbols-outlined arrow">
+    arrow_left_alt
+  </span>
+  <h3>
+    <b>Cylinder History:</b>
+  </h3>
+<img class="pdf" *ngIf="!isDownloading"   (click)="getImage()" src="assets/pdfimg.png" />
+<div class="spinner-border text-primary" *ngIf="isDownloading"    role="status" style="margin-left:auto;">
+  <span class="sr-only"></span>
+</div>
+</div>
+
+<div class="details row ms-1 me-1 mb-3 list_filters ">
+  <div class="col-md-3 p-2">
+    <span class="details_label">Cylinder Code:</span>
+    <span> {{ cylinderCode }} </span>
+  </div>
+  <div class="col-md-3 p-2">
+    <span class="details_label">Gas Type:</span> <span> {{ gasType }} </span>
+  </div>
+  <div class="col-md-3 p-2">
+    <span class="details_label">Cylinder Size:</span>
+    <span> {{ cylinderSize }} </span>
+  </div>
+  <div class="col-md-3 p-2">
+    <span class="details_label">Cylinder Size:</span>
+    <span> {{ cylinderSize }} </span>
+  </div>
+
+</div>
+
+<div class="DisTable">
+<table class="cylinderHistory" class="table table-bordered table-sm" id="History">
+    <thead>
+      <tr>
+        <th>Sr.</th>
+        <th>Trn Id</th>
+        <th>Trn Type</th>
+        <th>Name</th>
+        <th>DC no.</th>
+        <th>ECR no.</th>
+        <th>Site Name</th>
+        <th>Trn Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of historyList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ record.transaction_id }}</td>
+        <td>{{ record.transaction_type }}</td>
+        <td>{{ record.customer_name }}</td>
+        <td>{{ record.dcId }}</td>
+        <td>{{ record.ecrId }}</td>
+        <td>{{ record.locationName }}</td>
+        <td>{{ record.transaction_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

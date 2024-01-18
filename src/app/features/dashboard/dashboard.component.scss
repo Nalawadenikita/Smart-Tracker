@@ -1,0 +1,192 @@
+
+
+.rowTables {
+  gap:80px; 
+  display: flex;
+ width: 100%;
+ height: 100%;
+justify-content:center;
+
+}
+
+.welcome_txt {
+  margin-top: 3px;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  padding: 20px;
+  border-radius: 10px;
+
+}
+
+.welcome_txt .welcome {
+  font-weight: 400;
+  font-size: 20px;
+  color: grey;
+}
+.chart_container{
+  position: relative;
+}
+.Pie{
+   width:450px;
+
+}
+
+.Bar{
+  width:450px;
+
+}
+
+ #dis_name {
+  font-weight: 500;
+  font-size: 20px;
+  margin-left: 5px;
+  
+
+  overflow: hidden;
+  white-space: nowrap;
+  // border-right: 3px solid;
+  width: 100%;
+ }
+
+
+span{
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.charts {
+  display: flex;
+  margin-top: 50px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title h1 {
+  font-size: 2rem;
+}
+  
+td {
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+}
+
+.count_cards {
+ text-align: center;
+
+ margin-bottom: 18px;
+
+ 
+}
+.count-card{
+  border: 1px solid  #a2dbf1;
+  margin-top: 18px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.mysize{
+  // margin-right: 8px;
+  // width: 60px;
+  padding:auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+}
+
+.count_cards > h1 {
+  font-size: 2em;
+  text-justify:auto ;
+}
+#pieChart{
+  max-height: 500px;
+  
+}
+
+#pieChart1{
+  
+  max-height: 400px;
+
+}
+.chart-title {
+  position: absolute;
+ 
+top:7px;
+  
+  font: 400 14px / 20px Roboto, "Helvetica Neue", sans-serif;
+  color: rgba(0, 0, 0, 0.997);
+
+}
+@media only screen and (max-width: 500px) {
+  #pieChart{
+    
+    margin: 0;
+    padding: 0;
+  
+  }
+
+  #barChart{
+    width:100% !important;
+    margin: 0;
+    padding: 0;
+    display: block;
+    box-sizing: border-box;
+    height: 375px;
+    width: 148px;
+  }
+}
+  @media only screen and (max-width: 726px) {
+    .rowTables{
+     
+      margin: 0;
+      padding: 0;
+  
+     
+    width: 1056px;
+    }
+  }
+  @media only screen and (max-width: 926px) {
+  .rowTables {
+    gap: 80px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+    @media only screen and (max-width: 607px) {
+    .Bar{
+    
+      display: block;
+      box-sizing: border-box;
+      height: 375px;
+      width: 148px;
+    }
+  }
+  @media only screen and (max-width: 551px){
+    .rowTables{
+    display: flex;
+    flex-direction: column;
+
+    height: 207px;
+      width: 288px;
+    } 
+   
+    
+    .Bar{
+      display: block;
+      box-sizing: border-box;
+      height: 207px;
+      width: 288px;
+    }
+    .Pie{
+      display: block;
+      box-sizing: border-box;
+      height: 207px;
+      width: 288px;
+    }
+  }
+  .chart_container{
+    height: 400px;
+  }

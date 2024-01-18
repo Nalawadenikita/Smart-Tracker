@@ -1,0 +1,14 @@
+<form id="medform">   
+
+        <div class="search-container">
+        <input type="text" id="medinp" (keydown.enter)="getSearchValue()" (input)="checkVal($event)"[(ngModel)]="inputtedValue" [ngModelOptions]="{standalone: true}" placeholder="Search.." > 
+       
+        <span class="material-symbols-outlined" style="position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 8px;">
+                search
+                </span>
+        </div>
+</form>
+

@@ -1,0 +1,95 @@
+
+.data{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 90px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+    
+  }
+
+  .appfilter {
+    // margin-left: 10px;
+  }
+
+
+
+  .DisTable{
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    color: grey;
+  }
+
+
+  @media only screen and (max-width: 670px) {
+    .data{
+    align-items: flex-start;
+    }
+    
+  }
+
+  @media only screen and (max-width: 500px) {
+    .data{
+      flex-direction: column;
+    }
+    .data label{
+    display:none;
+    }
+    
+    .data .btn{
+      width:100%;
+      margin-top: 5px;
+    }
+    .data .appfilter{
+      width:100%;
+      margin-left: 0;
+
+    }
+}
+
+::ng-deep #swal2-title{
+  font-size: 14px;
+}
+
+::ng-deep .swal2-popup{
+  padding: 0px !important;
+  height: auto;
+  min-width: 250px;
+  width: auto;
+
+}
+
+::ng-deep .swal2-styled {
+  padding: 8px;
+  transition: box-shadow .1s;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0);
+  font-weight: 500;
+}
+
+::ng-deep .swal2-icon {
+  position: relative;
+  box-sizing: content-box;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  margin: 0.5em auto -0.4em;
+  border: 0.25em solid rgba(0,0,0,0);
+  border-radius: 50%;
+  border-color: #000;
+  font-family: inherit;
+  line-height: 5em;
+  cursor: default;
+  user-select: none;
+}

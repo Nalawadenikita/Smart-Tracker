@@ -1,0 +1,193 @@
+h3 {
+  margin-bottom: 3px;
+}
+
+.data {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 6px;
+}
+
+.clearFilterBtn button {
+  margin-top: 4px;
+  border: 1px solid #a2dbf1;
+  border-radius: 5px;
+  padding: 9px;
+  font-size: 13px;
+}
+
+.btn {
+  background-color: #0466BF;
+  color: #fff;
+  width: 50px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  //padding: 4.5px;
+  //margin-right: 10px;
+  height: 50px;
+}
+
+.imgexcel {
+  margin-left: auto;
+  width: 30px;
+  cursor: pointer;
+  margin-top: 2px;
+  height: 30px;
+  // margin-top: 10px;
+}
+
+.displayLoader {
+  display: none;
+}
+
+.displayCursor{
+  
+}
+
+.btn-search {
+  background-color: #0466BF;
+  color: #fff;
+  width: 50px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  //padding: 4.5px;
+  //margin-right: 10px;
+  height: 50px;
+}
+
+.ColRed {
+  color: rgb(194, 96, 112);
+}
+
+.DisTable {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.total_holding {
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  text-align: left;
+  background-color: #EEEEEE;
+  padding: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+
+}
+
+table tr {
+  border-bottom: 0.5px solid #ddd
+}
+
+table td {
+  background-color: white;
+  padding: 5px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.btn {
+  background-color: #0466BF;
+  color: #fff;
+  width: 38px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  padding: 4.5px;
+  float: right;
+  // float: right;
+  margin-bottom: 20px;
+}
+
+.downloadBtn_btn {
+  border: 1px solid #0466BF;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+  color: gray;
+}
+
+.dateSelector {
+  position: relative;
+  // top: -28px;
+}
+
+::ng-deep .list_filters .mat-form-field-flex>.mat-form-field-infix {
+  padding: 0.4em 0px 0.8em 0px !important
+}
+
+::ng-deep .list_filters .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid;
+  margin: 7px 4px 0px 4px;
+}
+
+::ng-deep .list_filters .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #a2dbf1;
+}
+
+::ng-deep .mat-select-placeholder {
+  color: rgba(0, 0, 0, 0.58);
+}
+
+
+// ::ng-deep.mat-form-field-infix {
+//   padding: 0.5em 0;
+//   border-top: 6px solid transparent;
+// }
+
+
+@media only screen and (max-width: 670px) {
+  .data {
+    align-items: flex-start;
+  }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .row {
+    gap: 0px;
+    ;
+  }
+
+  .btn {
+    border-radius: 50%;
+  }
+
+  .btn-search {
+    border-radius: 50%;
+    margin-right: auto;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+  .download {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .btn-div {
+    margin-bottom: 10px;
+  }
+
+
+}

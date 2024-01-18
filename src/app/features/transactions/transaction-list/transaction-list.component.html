@@ -1,0 +1,43 @@
+<div *ngIf="isLoading  " style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center" >
+
+    <div >
+        <mat-spinner [diameter]="75"></mat-spinner>
+    </div>
+</div>
+
+<h3><b>Transaction List</b></h3>
+<div class="row textRight">
+   
+    <div class="col-md-9 col-sm-12">
+        <div class="row list_filters mt-0">
+            <mat-form-field class="col-md-3" appearance="outline">
+                <mat-select placeholder="Customer name" [(value)]="selectedCustomers" (selectionChange)="renderTransaction()" multiple>
+                  <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" style="height: 50px;">
+                    <mat-option *ngFor="let item of customersList" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-md-3" appearance="outline">
+                <mat-select placeholder="Refiller name" [(value)]="selectedRefiller" (selectionChange)="renderTransaction()" multiple>
+                    <mat-option *ngFor="let item of refillerLIst" [value]="item.id"> {{item.name}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-md-3" appearance="outline">
+                <mat-select placeholder="Transaction type" [(value)]="selectedTransactionType" (selectionChange)="renderTransaction()" multiple>
+                    <mat-option *ngFor="let item of transactionType" [value]="item.id"> {{item.typeName}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-12 mt-2">
+        <button class="btn1" routerLink="/features/transactions/add-transaction">Add</button>
+    </div>
+
+</div>
+<div class="DisTable">
+    <app-table [tableData]="transactionsList" [displayedColumns]="TransactionCol" [Value]="value"
+        [totalRecords]="totalRecords" [totalPages]="totalPages" [currentPage]="currentPage"
+        (pageIndexCalculator)="pageIndexCalculator($event)" [isDisUser]="isDisUser"></app-table>
+</div>
+<td>
+</td>

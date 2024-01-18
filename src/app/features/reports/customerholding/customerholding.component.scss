@@ -1,0 +1,87 @@
+.wrap-table{
+    width:100%;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 5px 5px rgb(200, 195, 195);
+}
+
+
+table{
+     width:100%;
+      min-width: 600px;
+     
+    //  max-height: 400px;
+    
+    //  table-layout: fixed;
+    //  border-collapse: collapse;
+   
+    
+}
+
+// .pdf .displayCursor{
+//     cursor: no-drop !important;
+// }
+
+.scrollable{
+    // max-height:600px;
+    // overflow-y: auto;
+    // overflow-x: auto;
+    // display:block;
+}
+
+table thead {     position: sticky;     top: 0;     z-index: 2; /* Adjust the z-index value as needed */}
+ table th {     background-color: #EEEEEE;     padding: 5px;     font-weight: 500;     white-space: nowrap;     position: sticky;     top: 0; } /* Add a class to the tbody element for styling */
+ //table tbody {     display: block;     max-height: 400px; /* Set a maximum height for the tbody to enable scrolling */    overflow-y: auto; }
+table tr{
+    border-bottom:0.5px solid #ddd
+}
+table td{
+    background-color: white;
+    padding: 5px;
+    vertical-align: middle;
+    //  white-space:nowrap;
+}
+.pdf{
+    width: 30px;
+    height:30px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+.data{
+    display:flex;
+}
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 38px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+    // margin-left:96%;
+    // margin-left: auto;
+    float: right;
+    // float: right;
+    margin-bottom: 20px;
+  }
+
+
+
+h1 {
+    text-align: center;
+    color: gray;
+}
+
+
+:host ::ng-deep #title {
+    display: none !important;
+}
+ 
+// @media only screen and (max-width: 500px) {
+//     // .btn {
+//     //     width: 100%;
+//     // }
+// }
+

@@ -1,0 +1,27 @@
+
+<div class="cross">
+<svg width="15" class="text-light"  height="15" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" (click)="closeDialog() " >
+  <path d="M7.496 7.495a.6.6 0 0 1 .85 0l3.174 3.176 3.176-3.176a.6.6 0 0 1 .85.85l-3.177 3.174 3.176 3.176a.603.603 0 0 1 0 .85.6.6 0 0 1-.85 0l-3.175-3.177-3.175 3.176a.6.6 0 1 1-.85-.85l3.177-3.175-3.176-3.175a.6.6 0 0 1 0-.85Z"></path>
+</svg>
+</div>
+<div class="wrapper">
+    <form [formGroup]="CylinderFrom" (ngSubmit)="data ? editCylinderSize() : onSubmit()">
+      <div class="card" style="width: 25rem;">
+        <div class="card-header">
+          <b>{{label}}</b>
+      </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="examplesize" class="form-label">Size</label>
+            <input type="text" class="form-control" id="exampleInputSize" formControlName="cylinderType" (keydown)="validateText($event); restrictInitialSpace($event)" >
+          </div>
+          <div class="text-danger" *ngIf="submitted && dist['cylinderType'].errors?.['required'] && dist['cylinderType'].touched" style="margin-top: -9px; "> Cylinder size is required</div>
+          
+          <div style="margin-top:34px">
+            <button type="submit" class="btn btn-primary gap-2" >Save</button>
+          <button type="button" class="btn btn-danger gap-2" style="margin-left: 9px;"(click)="closeDialog()">Cancel</button>
+        </div>
+        </div>
+      </div>
+    </form>
+  </div>

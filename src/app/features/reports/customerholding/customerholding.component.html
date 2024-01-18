@@ -1,0 +1,83 @@
+<div *ngIf="isLoading" style="height: 100vh;width: 100vw;position: fixed;background-color: rgba(0, 0, 0, 0.178);inset:0;z-index: 3;" class="d-flex align-items-center justify-content-center">
+
+  <div >
+      <mat-spinner [diameter]="75"></mat-spinner>
+  </div>
+</div>
+<div class="data">
+<h3 id="header"><b>Customer Holding Reports:</b></h3>
+
+<img class="pdf"  (click)="downloadPDF()" *ngIf="!isDownloading" src="assets/pdfimg.png" />
+
+  <div class="spinner-border text-primary" *ngIf="isDownloading" role="status" style="margin-left:auto;" >
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+<div class="row">
+  <mat-form-field appearance="outline" class="col-md-3 col-sm-12" >
+    <mat-select (selectionChange)="selectedCus($event)" placeholder="Customer Name" formControlName="customerName">
+      <input matInput  (input)="customerInputChange($event)" placeholder="Search Customer" style="height: 50px;" >
+      <mat-option [value]="'All'"> For All Customers </mat-option>
+      <mat-option *ngFor="let type of customers" [value]="type.id">
+        {{ type["name"] }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<!-- <iframe *ngIf="!noTranspres" [src]="pdfSrc" width="100%" height="700px" ></iframe> -->
+<div class="wrap-table" *ngIf="displayTable">
+<table id="sumReport" class="table">
+  <thead>
+    <tr>
+      <th>Transaction Date</th>
+      <th>Customer Name</th>
+      <th>Location</th>
+      <th>DCID</th>
+      <th>Gas Type</th>
+      <th>Cylinder Size</th>
+      <th>Cylinder Code</th>
+      <th>QR Code</th>
+      <th>Cylinder Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let record of final_pdf_data; let i = index">
+      <tr *ngIf="!record.total">
+        <td>{{ record.t_date}}</td>
+        <td>{{ record.customer_name }}</td>
+        <td>{{ record.location }}</td>
+        <td>{{ record.t_code }}</td>
+        <td>{{ record.nature_of_gas }}</td>
+        <td>{{ record.cylinder_size }}</td>
+        <td>{{ record.cylinder_code }}</td>
+        <td>{{record.qrCode}}</td>
+        <td>{{ record.holding_count }}</td>
+      </tr>
+      <ng-container *ngFor="let list of nlocation_list">
+        <tr *ngIf="record.location == list.location && final_pdf_data[i + 1].location != list.location">
+          <td class=" text-primary" colspan="8">
+           <b> Total holding at location {{ list.location }} for {{record.customer_name}} </b>
+          </td>
+          <td class=" text-primary">
+            <b>{{list.count}}</b>
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngIf="record.total">
+        <td class=" text-primary" colspan="7">
+          <b>TOTAL HOLDING FOR  {{ final_pdf_data[i - 1].customer_name }}:</b>
+        </td>
+        <td class="fw-bold text-primary" *ngIf="record.total">
+          {{ record.total }}
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<h2 *ngIf="noTranspres" style="text-align: center;"><b> No Data Present!</b></h2> 
+</div>
+<h2 *ngIf="!displayTable" style="text-align: center; color:blue"><b>Please Select Customer</b></h2>
+
+
+

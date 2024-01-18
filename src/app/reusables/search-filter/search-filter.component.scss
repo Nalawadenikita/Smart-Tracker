@@ -1,0 +1,60 @@
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input {
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+  
+    height: 30px;
+    width: 300px;
+    padding-left: 10px;
+}
+
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 90px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+  }
+
+  @media only screen and (max-width: 500px) {
+   
+    #medform{
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #medform input{
+        width: 100%;
+    }
+    #medform button{
+        width: 100%;
+    }
+
+
+    
+  }
+
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-container i.fa-search {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    color: #aaa;
+    font-size: 20px;
+  }
+
+  
+
+

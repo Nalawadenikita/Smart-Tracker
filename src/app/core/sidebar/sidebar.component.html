@@ -1,0 +1,20 @@
+<div class="maincontainer">
+ <div class="p-2"> 
+<img class="img-responsive" src="/assets/tracker.png" style="height:150px;width:200px; margin-top: -50px;">
+</div>
+
+<ul class="lists" >
+        <div *ngFor="let item of mainMenu">
+                <li *ngIf="item.title!='Reports-Menu'" routerLinkActive="router-link-active" (click)="reset()"  routerLink={{item.link}}><span class="material-symbols-outlined">{{item.icon}}</span><a>{{item.title}}</a></li>    
+        </div>
+      
+         <div *ngFor="let item of mainMenu">
+                <div *ngIf="item.title=='Reports-Menu'">
+                        <li (click)="displayMenu()"><span class="material-symbols-outlined">{{item.icon}}</span><a>{{item.title}}</a></li>
+                        <div *ngFor="let menus of item.subMenu" class="menu">
+                                <li *ngIf="isMenuOpened==true" routerLinkActive="router-link-active"  routerLink={{menus.link}} (click)="closeSidebar()"><span class="material-symbols-outlined">chevron_right</span><a>{{menus.title}}</a></li>
+                        </div>
+                </div>
+        </div>
+</ul>
+</div>

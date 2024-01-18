@@ -1,0 +1,319 @@
+
+
+body {
+    background-color: #ececec;
+}
+
+.wrapper {
+    background: #ececec;
+    height: fit-content;
+    padding: 2.9rem 0;
+    margin: 0;
+
+    overflow: hidden
+}
+
+.main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    height: fit-content;
+}
+
+.row {
+    border: 2px solid grey;
+    width: 900px;
+    height: 600px;
+  
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0);
+}
+
+.side-image {
+   
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 10px 0 0 10px;
+    max-height: 100%;
+
+}
+
+img {
+    width: 235px;
+    
+    top: 30px;
+    left: 30px;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text p {
+    color: #fff;
+    font-size: 18px;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 85px;
+
+}
+.cylinderlable {
+    margin-bottom: -1px;
+}
+
+.input-box {
+    width: 330px;
+    box-sizing: border-box;
+
+}
+
+.input-box header {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 55px;
+    font-size: 23px;
+}
+
+.input-box p {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 80px;
+    font-size: 28px;
+    margin-top: 23px;
+}
+
+.input-box p img {
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+
+}
+
+.input {
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    margin-bottom: 20px;
+    color: #40414a;
+}
+
+
+.input-field .input:focus~label {
+    top: -1px;
+    font-size: 13px;
+
+}
+
+.input-field .input:valid~label {
+    top: -1px;
+    font-size: 13px;
+    color: #5d50;
+
+}
+
+
+
+.submit {
+    width: 200px;
+    text-align: center;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 97px !important;
+}
+
+.check {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px !important;
+}
+
+.login-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  
+
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Times New Roman', Times, serif;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.pass{
+    
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: .375rem;
+    padding-right: .75rem;
+
+}
+ .pass input{
+    border: none;
+    flex: 1;
+}
+.pass i{
+    cursor: pointer;
+}
+ .pass input:focus{
+    color: none !important;
+    background-color: none !important;
+    border-color: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+ .pass:focus-within{
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+.linp{
+   
+    margin-bottom: -1px;
+}
+.passcontain{
+    margin-left: 9.2px;
+    width: 95%;
+}
+.text-danger{
+    margin-left: 9.4px;
+}
+@media only screen and (max-width:764px) {
+
+
+.wrapper {
+    padding: 0.3rem 0;
+}
+
+    .side-image {
+        border-radius: 10px 10px 0 0;
+        margin-top: 4rem;
+        width: 15.3rem;
+        height: 1rem;
+        position: absolute;
+        top: 20px;
+
+
+    }
+
+    img {
+        width: 35px;
+        height: 160px;
+       
+        top: 20px;
+        left: 47%;
+    }
+
+    .text {
+        position: absolute;
+        top: 70%;
+        text-align: center;
+
+    }
+
+    .row {
+        max-width: 420px;
+        width: 100%;
+    }
+
+    .row input {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .check {
+
+        max-width: 300px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+    }
+
+    .check a {
+        font-size: 12px;
+    }
+
+    .check input {
+        margin-top: 3px;
+        width: 10px;
+
+    }
+
+    a {
+        margin-left: 1.5rem !important;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .input-field .submit {
+        width: 90px;
+        margin-left: 3rem;
+    }
+
+    .login-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-img-container {
+        height: 30px !important;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        font-family: 'Times New Roman', Times, serif;
+        align-items: center;
+        justify-content: center;
+        height: 56px;
+    }
+
+    .logo img {
+        display: flex;
+        flex-direction: row;
+        font-family: 'Times New Roman', Times, serif;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+    }
+}
+
+
+
+
+.login-img-container {
+    height: 30px;
+}

@@ -1,0 +1,100 @@
+h1 {
+    text-align: center;
+    color: gray;
+}
+
+.title {
+    margin-bottom: 12px;
+}
+
+.arrow {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 40px;
+    margin-right: 10px;
+    padding: 6px;
+    margin-top: -7px;
+    background-color: #0466BF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition-duration: 300ms;
+}
+
+.btn {
+    background-color: #0466BF;
+    color: #fff;
+    width: 90px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 4.5px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.details {
+    margin-bottom: 15px;
+}
+
+.details_1, .details_2, .details_3 {
+    margin-bottom: -13px;
+}
+
+.details_labels {
+    font-weight: 500;
+    // color: #0466BF;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.pdf{
+    width: 40px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+}
+
+table th{
+    text-align:left;
+    background-color: #EEEEEE;
+    padding: 10px;
+    font-weight:500;
+}
+table tr{
+    border-bottom:0.5px solid #ddd
+}
+table td{
+    background-color:white;
+    padding:5px;
+}
+
+// p {
+//     padding: 5px 0px 5px 10px;
+//     border: 1px solid black;
+// }
+
+// .details_even_rows {
+//     background-color: #fff;
+//     margin-bottom: 0px;
+// }
+
+// .details_odd_rows {
+//     background-color: #f2f2f2;
+// }
+
+// .mat-typography p {
+//     margin: 0 0 0px !important;
+// }
+
+// ::ng-deep .mat-dialog-container {
+//     padding: 0 !important;
+//     overflow-x: hidden;
+// }

@@ -1,0 +1,98 @@
+*{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.card {
+    width: 100% !important;
+
+}
+.card-header{
+    background-color: white !important;
+}
+
+.customerlabel {
+    display: flex !important;
+    align-items: center !important;
+    height: 100%;
+    width: 70px;
+
+}
+
+.form-control {
+    height :50px;
+    flex: 1;
+    font-size: inherit;
+}
+
+sup {
+    color: red;
+}
+
+.btn {
+    width: 84px;
+    margin: 8px 8px ;
+}
+.button{
+    display: flex ;
+    justify-content: flex-end;
+
+}
+.input-field {
+    width: 100%;
+    margin-top: 6px;
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+
+
+
+::ng-deep #swal2-title{
+    font-size: 14px;
+  }
+  
+  ::ng-deep .swal2-popup{
+    padding: 0px !important;
+    height: auto;
+    min-width: 250px;
+    width: auto;
+  
+  }
+  
+  ::ng-deep .swal2-styled {
+    padding: 8px;
+    transition: box-shadow .1s;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0);
+    font-weight: 500;
+  }
+
+  ::ng-deep .swal2-icon {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    margin: 0.5em auto -0.4em;
+    border: 0.25em solid rgba(0,0,0,0);
+    border-radius: 50%;
+    border-color: #000;
+    font-family: inherit;
+    line-height: 5em;
+    cursor: default;
+    user-select: none;
+}
+
+
+
+
+@media screen and(max-width:"585px") {
+    .customerdiv {
+        flex-direction: column;
+    padding-right: .3rem !important;
+    padding-left: .3rem !important;
+
+    }
+    .form-label{
+        margin-bottom: 0rem !important;
+    }
+    
+}

@@ -1,0 +1,170 @@
+<app-loader></app-loader>
+
+<div class="container">
+  <div class="mainclass">
+    <div class="row">
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <b>{{ label }}</b>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="customerForm" class="row g-4" (ngSubmit)="formData ? editCustomer() : addCustomer()">
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputEmail4" class="form-label customerlabel">Name<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name *"
+                  [ngClass]="{ 'is-invalid': submitted && dist['name'].errors }"  />
+
+                <div *ngIf="submitted && dist['name'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['name'].errors?.['required']">
+                   Name is required
+                  </div>
+                  <div class="text-danger" *ngIf="dist['name'].errors?.['pattern']">
+                    Name should only contain alphabets and spaces.
+                  </div>
+                  <div *ngIf="dist['name'].errors?.['minlength'] && !dist['name'].errors?.['pattern']" class="text-danger">
+                    Name must be at least 3 characters
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputPassword4" class="form-label customerlabel cus">Address<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="inputPassword4" id="address" formControlName="address" placeholder="Address *"
+                  [ngClass]="{
+                    'is-invalid': submitted && dist['address'].errors
+                  }" (keydown)="restrictInitialSpace($event)" />
+                <div *ngIf="submitted || dist['address'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['address'].errors?.['required']">
+                    Address is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputEmail4" class="form-label customerlabel">Email<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="email" class="form-control" id="inputEmail4" id="email" placeholder="Email *" formControlName="email" [ngClass]="{
+                    'is-invalid': submitted && dist['email'].errors
+                  }" (keydown)="restrictInitialSpace($event)" />
+               
+                <div *ngIf="submitted || dist['email'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['email'].errors?.['required']">
+                    Email is required
+                  </div>
+                  <small *ngIf="dist['email'].errors?.['pattern'] " class="text-danger">
+                    Please Enter  valid email address</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv">
+              <!-- <label for="inputphone" class="form-label customerlabel">Phone<sup>*</sup></label> -->
+              <div class="input-field">
+                <!-- <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Phone no.*" [ngClass]="{
+                    'is-invalid': submitted && dist['phone'].errors
+                  }" (keydown)="validateNumber($event); restrictInitialSpace($event)" /> -->
+                  <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Phone no.*" [ngClass]="{
+                    'is-invalid': submitted && dist['phone'].errors
+                  }" (keydown)="restrictInitialSpace($event)" />
+                <div *ngIf="submitted || dist['phone'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['phone'].errors?.['required']">
+                    Phone no. is required
+                  </div>
+                  <div *ngIf="dist['phone'].errors?.['pattern']" class="text-danger">
+                    Please enter valid phone number.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex gap-2 customerdiv" *ngIf="!isEdit">
+            <!-- ?  <label for="inputDefaultSite" class="form-label customerlabel cus">Default site<sup>*</sup></label> -->
+              <div class="input-field">
+                <input type="text" class="form-control" id="defaultsite" formControlName="defaultsite" placeholder="Site Location *"
+                  (keydown)="validateText($event); restrictInitialSpace($event)" [ngClass]="{
+                    'is-invalid': submitted && dist['defaultsite'].errors
+                  }" />
+                <div *ngIf="submitted && dist['defaultsite'].errors" class="invalid-feedback">
+                  <div *ngIf="dist['defaultsite'].errors?.['required']">
+                  Site location is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button class="btn btn-danger" (click)="onclick()">Cancel</button>
+            </div>
+          </form>
+          <br>
+
+
+          <div *ngIf="is_siteForm_open || is_editData">
+            <div class="card-header">
+              <b>Add Site Details</b>
+            </div>
+            <form [formGroup]="SiteForm"  #formDirective="ngForm">
+              <div class="siteForm row justify-content-around addSiteDetails mt-3">
+
+                <mat-form-field appearance="outline" class="col-sm-12 col-md-3">
+                  <!-- <mat-label>Site Name</mat-label> -->
+                  <input formControlName="siteName" matInput placeholder="Site Name"  placeholder="Site Name *" (keydown)="validateText($event); restrictInitialSpace($event)" />
+                  <mat-error *ngIf="SiteForm.controls['siteName'].invalid && SiteForm.controls['siteName'].touched">
+                    Please enter the Site Name
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="col-sm-12 col-md-2">
+                  <!-- <mat-label>State</mat-label> -->
+                  <mat-select name="state" (selectionChange)="selectedState($event)" formControlName="state" placeholder="State *">
+                    <mat-option *ngFor="let item of stateList" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="SiteForm.controls['state'].invalid && SiteForm.controls['state'].touched">
+                    Please select a state
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="col-sm-12 col-md-2">
+                  <!-- <mat-label>City</mat-label> -->
+                  <mat-select formControlName="city" name="city" placeholder="City *">
+                    <mat-option *ngFor="let item of cityList" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="SiteForm.controls['city'].invalid && SiteForm.controls['city'].touched">
+                    Please select a city
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="col-sm-12 col-md-3">
+                  <!-- <mat-label>Pincode</mat-label> -->
+                  <input formControlName="pincode" matInput placeholder="Pincode *" [maxlength]="6" [pattern]="'\\d{6}'"
+                    (keydown)="validateNumber($event); restrictInitialSpace($event)" />
+                  <mat-error *ngIf="SiteForm.controls['pincode'].invalid && SiteForm.controls['pincode'].touched">
+                    Please enter a 6-digit pincode
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="col-md-2 text-center ">
+                  <button class="btn btn-primary addButton" (click)="addSite()">
+                    <span class="material-icons add-icon" style="position: relative; right: 5px; top: 1px;"> add </span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="DisTable" *ngIf="siteList.length > 0">
+              <app-table [tableData]="siteList" [displayedColumns]="SiteCols"></app-table>
+              <h1 class="list_not_available" *ngIf="siteList.length === 0">
+                List not available
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
